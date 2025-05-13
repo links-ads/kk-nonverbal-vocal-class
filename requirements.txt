@@ -1,0 +1,2 @@
+# insert your 'production' requirements here
+numpy >= 1.21.0, < 2.0.0

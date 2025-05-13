@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-name"
+authors = [{ name = "author name", email = "author@email.com" }]
+description = "Project description"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+# Dynamic metadata allow to assign the version number to the package at build time.
+# The location of the version number is specified in the [tool.setuptools.dynamic] section.
+dynamic = ["version", "dependencies"]
+
+# Optional dependencies, use this to include everything that the project needs to run in development.
+# These can be installed by specifying for instance `pip install -e .[dev|docs|test]`
+# Here the loose versioning policy is usually preferred.
+[project.optional-dependencies]
+# Add development dependencies here
+dev = [
+    "gitchangelog >= 3.0.4, < 4.0.0",
+    "ruff >= 0.5.0, < 1.0",
+]
+# Add documentation dependencies here
+docs = [
+    "mkdocs-material >= 9.5.0, < 10",
+    "mdx-include >= 1.4.0, < 2",
+]
+# Add testing dependencies here
+test = [
+    "coverage >= 7.6.0, < 8",
+    "pytest >= 8.3.0, < 9",
+    "pytest-cov >= 5.0.0, < 6.0",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.dynamic]
+version = { attr = "package_name.__version__" }
+dependencies = {file = "requirements.txt"}
+
+[tool.ruff]
+line-length = 119
+select = ["E", "F", "UP"]
