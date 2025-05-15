@@ -1,4 +1,4 @@
-from project_name import __version__
+from non_verbal_voc_class import __version__
 
 
 def test_example_fixture(example_fixture):

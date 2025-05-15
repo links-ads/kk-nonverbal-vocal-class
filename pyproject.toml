@@ -3,12 +3,12 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "project-name"
-authors = [{ name = "author name", email = "author@email.com" }]
-description = "Project description"
+name = "non_verbal_voc_class"
+authors = [{name = "Juan Jose Marquez", email = "juan.marquez@linksfoundation.com"}]
+description = "Non verbal vocalization classification"
 readme = "README.md"
 license = { file = "LICENSE" }
-requires-python = ">=3.10"
+requires-python = "3.10"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -43,7 +43,7 @@ test = [
 package-dir = { "" = "src" }
 
 [tool.setuptools.dynamic]
-version = { attr = "package_name.__version__" }
+version = {attr = "non_verbal_voc_class.__version__"}
 dependencies = {file = "requirements.txt"}
 
 [tool.ruff]
