@@ -4,11 +4,10 @@ import transformers.models.whisper.modeling_whisper as whisper
 
 from torch import nn
 from transformers.activations import ACT2FN
-from ...configs import ModelConfig
 from .adapters import Adapter
 
 class WhisperEncoderLayer(nn.Module):
-    def __init__(self, config: ModelConfig):
+    def __init__(self, config):
         super().__init__()
         self.embed_dim = config.d_model
         self.self_attn = whisper.WhisperAttention(

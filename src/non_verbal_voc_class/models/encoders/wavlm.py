@@ -5,13 +5,12 @@ import loralib as lora
 import transformers.models.wavlm.modeling_wavlm as wavlm
 
 from torch import nn
-from ...configs import ModelConfig
 from .adapters import Adapter
 
 class WavLMEncoderLayer(nn.Module):
     def __init__(
             self,
-            config: ModelConfig, 
+            config, 
             has_relative_position_bias: bool = True):
         super().__init__()
         self.attention = wavlm.WavLMAttention(

@@ -1,7 +1,3 @@
-"""
-    Part of the code was referenced from SUPERB: https://github.com/s3prl/s3prl
-    and https://github.com/wngh1187/IPET/blob/main/Speechcommands_V2/W2V2/models/W2V2.py
-"""
 import torch
 
 from ..configs import ModelConfig

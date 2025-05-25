@@ -4,6 +4,7 @@ from .base_classifier import BaseClassifier
 from .wav2vec2_classifier import Wav2Vec2Classifier
 from .wavlm_classifier import WavLMClassifier
 from .whisper_classifier import WhisperClassifier
+from .hubert_classifier import HubertClassifier
 
 class ModelFactory:
     @staticmethod
@@ -18,5 +19,7 @@ class ModelFactory:
             return WavLMClassifier(config)
         elif model_type == 'whisper':
             return WhisperClassifier(config)
+        elif model_type == 'hubert':
+            return HubertClassifier(config)
         else:
             raise ValueError(f"Unsupported model type: {model_type}")
