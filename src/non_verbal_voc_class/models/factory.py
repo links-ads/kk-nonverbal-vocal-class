@@ -1,34 +1,22 @@
-from .audio_classifier_model import AudioModelForClassification
-from .old_models import make_model, HParams
-from transformers import PretrainedConfig, PreTrainedModel
 from torch import Tensor
+from ..configs import ModelConfig
+from .base_classifier import BaseClassifier
+from .wav2vec2_classifier import Wav2Vec2Classifier
+from .wavlm_classifier import WavLMClassifier
+from .whisper_classifier import WhisperClassifier
 
-class ModelsFactory:
+class ModelFactory:
     @staticmethod
-    def create_model(model_type: str, model_config: PretrainedConfig, label_weights: Tensor) -> PreTrainedModel:
-        """
-        Factory function to get the appropriate model based on the model type.
-    
-        Parameters:
-        ----------
-        model_type (str): The type of the model. Must be one of "audio" or "multimodal".
-        model_config (PretrainedConfig): The configuration for the model.
-
-        Returns:
-        --------
-        PreTrainedModel: An instance of the model based on the model type.
-
-        Raises:
-        -------
-        ValueError: If the model_type is unknown.
-        """
-        if model_type == "audio":
-            return AudioModelForClassification(model_config)
-        elif model_type == "old_audio":
-            hparams = HParams(
-                LABEL_WEIGHTS=label_weights,
-                **model_config.old_model_kwargs
-            )
-            return make_model(hparams)
+    def create_model(
+        config: ModelConfig,
+    ) -> BaseClassifier:
+        
+        model_type = config.model_type.lower()
+        if model_type == 'wav2vec2':
+            return Wav2Vec2Classifier(config)
+        elif model_type == 'wavlm':
+            return WavLMClassifier(config)
+        elif model_type == 'whisper':
+            return WhisperClassifier(config)
         else:
-            raise ValueError(f"Unknown model type: {model_type}")
+            raise ValueError(f"Unsupported model type: {model_type}")
