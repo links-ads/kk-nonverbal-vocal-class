@@ -1,25 +1,26 @@
 import torch
 import loralib as lora
-import transformers.models.wav2vec2.modeling_wav2vec2 as w2v2
+import transformers.models.unispeech.modeling_unispeech as unispeech
 
 from torch import nn
 from .adapters import Adapter
 
-class Wav2Vec2EncoderLayer(nn.Module):
+class UniSpeechEncoderLayer(nn.Module):
     def __init__(self, config):
         super().__init__()
-        self.attention = w2v2.Wav2Vec2Attention(
+        self.attention = unispeech.UNISPEECH_ATTENTION_CLASSES[config._attn_implementation](
             embed_dim=config.hidden_size,
             num_heads=config.num_attention_heads,
             dropout=config.attention_dropout,
             is_decoder=False,
         )
+
         self.dropout = nn.Dropout(config.hidden_dropout)
         self.layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
-        self.feed_forward = w2v2.Wav2Vec2FeedForward(config)
+        self.feed_forward = unispeech.UniSpeechFeedForward(config)
         self.final_layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
         self.config = config
-        
+
         if self.config.finetune_method == "embedding_prompt" or self.config.finetune_method == "combined":
             self.embed_prompt = nn.Parameter(torch.randn([1, self.config.embedding_prompt_dim, 768]))
             nn.init.xavier_uniform_(self.embed_prompt)
@@ -37,13 +38,13 @@ class Wav2Vec2EncoderLayer(nn.Module):
                 adapter_scalar=0.1
             )
 
-    # TODO: Use strategy pattern for different finetuning methods
+
     def forward(
-            self,
-            hidden_states,
-            attention_mask=None,
-            output_attentions=False,
-        ):
+        self,
+        hidden_states,
+        attention_mask=None,
+        output_attentions=False,
+    ):
         if self.config.finetune_method == "embedding_prompt" or self.config.finetune_method == "combined":
             hidden_states = torch.cat((self.embed_prompt.repeat(hidden_states.size(0), 1, 1), hidden_states), dim=1)
         attn_residual = hidden_states
@@ -61,7 +62,7 @@ class Wav2Vec2EncoderLayer(nn.Module):
         hidden_states = hidden_states + self.feed_forward(hidden_states)
 
         if self.config.finetune_method == "adapter":
-            hidden_states = hidden_states+ adapt_h
+            hidden_states = hidden_states + adapt_h
         if self.config.finetune_method == "adapter_l" or self.config.finetune_method == "combined":
             hidden_states = hidden_states + self.adapter(hidden_states)
             

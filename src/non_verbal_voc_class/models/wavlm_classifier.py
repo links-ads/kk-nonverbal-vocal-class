@@ -6,7 +6,7 @@ from .base_classifier import BaseClassifier
 from transformers import WavLMForSequenceClassification
 from transformers.modeling_outputs import SequenceClassifierOutput
 from torch import nn as nn
-from typing import Optional, Union, Tuple
+from typing import Optional
 
 
 class WavLMClassifier(BaseClassifier):
@@ -19,6 +19,7 @@ class WavLMClassifier(BaseClassifier):
 
         self.model = WavLMForSequenceClassification.from_pretrained(
             config.audio_model_name,
+            use_weighted_layer_sum=config.use_weighted_layer_sum,
         )
 
         # Read the model config

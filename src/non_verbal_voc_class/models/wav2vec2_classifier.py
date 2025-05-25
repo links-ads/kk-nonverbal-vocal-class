@@ -6,7 +6,7 @@ from .base_classifier import BaseClassifier
 from transformers import Wav2Vec2ForSequenceClassification
 from transformers.modeling_outputs import SequenceClassifierOutput
 from torch import nn as nn
-from typing import Optional, Union, Tuple
+from typing import Optional
 
 
 class Wav2Vec2Classifier(BaseClassifier):
@@ -19,6 +19,7 @@ class Wav2Vec2Classifier(BaseClassifier):
 
         self.model = Wav2Vec2ForSequenceClassification.from_pretrained(
             config.audio_model_name,
+            use_weighted_layer_sum=config.use_weighted_layer_sum,
         )
 
         # Read the model config
