@@ -1,13 +1,12 @@
 import os
 import csv
 import argparse
-from .configs import ModelConfig
-from .models import ModelsFactory
-from .preprocessing import (
-    PreprocessorConfig,
+from non_verbal_voc_class.configs import Config
+from non_verbal_voc_class.models import ModelFactory
+from non_verbal_voc_class.preprocessing import (
     get_label_weights
 )
-from .training import (
+from non_verbal_voc_class.training import (
     CollatorFactory,
     compute_metrics,
     load_dataset,
@@ -15,31 +14,28 @@ from .training import (
 from transformers import (
     TrainingArguments,
     Trainer, 
-    PretrainedConfig
 )
 
 
-def main(model_config_path: str, training_config_path: str, preprocessing_config_path: str) -> None:        
+def main(config_path: str) -> None:        
     """
         Main function to train a model with the specified parameters.
 
         Args:
-            model_config_path (str): Path to the model configuration file.
-            training_config_path (str): Path to the training configuration file.
-            preprocessing_config_path (str): Path to the preprocessing configuration file.
+        -----
+            config_path (str): Path to the configuration file in JSON format.
+        The configuration file should contain model, training, and preprocessing parameters.
+        The model will be trained using the specified configurations, and the evaluation metrics will be saved to a CSV file.
 
         Returns:
+        ------
             None
     """
     # Load configurations
-    ## Load preprocessing configuration
-    preprocessing_config = PreprocessorConfig.from_json(preprocessing_config_path)
-
-    ## Load training configuration
-    training_config = PretrainedConfig.from_json_file(training_config_path)
-
-    ## Load model configuration
-    model_config = ModelConfig(path_to_config=model_config_path)
+    config = Config.from_json(config_path)
+    preprocessing_config = config.preprocessing_config
+    training_config = config.training_config
+    model_config = config.model_config
 
     # Load dataset
     dataset = load_dataset(preprocessing_config)
@@ -50,15 +46,13 @@ def main(model_config_path: str, training_config_path: str, preprocessing_config
     setattr(model_config, "label_weights", label_weights_list)
 
     # Load model
-    model = ModelsFactory.create_model(
-        model_type=training_config.training_type,
-        model_config=model_config,
-        label_weights=label_weights
+    model = ModelFactory.create_model(
+        config=model_config
     )
     model.train()
 
     # Define data collator
-    data_collator = CollatorFactory.create_collator(training_config.training_type)
+    data_collator = CollatorFactory.create_collator(training_config.collator_type)
 
     # Define Training Arguments
     training_args = TrainingArguments(
@@ -75,7 +69,7 @@ def main(model_config_path: str, training_config_path: str, preprocessing_config
 
         # Batches
         per_device_train_batch_size=training_config.train_batch_size,
-        per_device_eval_batch_size=training_config.evalbatch_size,
+        per_device_eval_batch_size=training_config.eval_batch_size,
         eval_accumulation_steps=training_config.accummulation_steps,
         gradient_accumulation_steps=training_config.gradient_accumulation_steps,
         num_train_epochs=training_config.epochs,
@@ -126,13 +120,9 @@ def main(model_config_path: str, training_config_path: str, preprocessing_config
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a model with specified parameters.")
-    parser.add_argument("--model_config_path", type=str, help="Path to the model configuration file.")
-    parser.add_argument("--training_config_path", type=str, help="Path to the training configuration file.")
-    parser.add_argument("--preprocessing_config_path", type=str, help="Path to the preprocessing configuration file.")
+    parser.add_argument("--config_path", type=str, help="Path to the configuration file.")
 
     args = parser.parse_args()
     main(
-        model_config_path=args.model_config_path,
-        training_config_path=args.training_config_path,
-        preprocessing_config_path=args.preprocessing_config_path
-    )
+        config_path=args.config_path
+    

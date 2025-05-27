@@ -1,8 +1,6 @@
 import torch
 import torchaudio
-
-from .base_preprocessor import BasePreprocessor
-from ..config import PreprocessorConfig
+from .config import PreprocessorConfig
 from transformers import AutoFeatureExtractor
 from pathlib import Path
 from datasets import (
@@ -11,7 +9,7 @@ from datasets import (
     load_from_disk,
 )
 
-class AudioPreprocessor(BasePreprocessor):
+class AudioPreprocessor():
     def __init__(self, preprocessing_config: PreprocessorConfig):
         """
         Preprocessor class for audio datasets.
@@ -66,7 +64,7 @@ class AudioPreprocessor(BasePreprocessor):
                 max_length=self.max_duration * self.target_sampling_rate,
                 padding="max_length",
             )
-            result["labels"] = [self.label2id[label.lower()] for label in examples["emotion"]]
+            result["labels"] = [self.label2id[label.lower()] for label in examples["label"]]
             result["input_features"] = result["input_values" if "input_values" in result else "input_features"]
             result.pop('input_values', None)
 
@@ -86,7 +84,7 @@ class AudioPreprocessor(BasePreprocessor):
             preprocess_function,
             batched=True,
             num_proc=self.num_proc,
-            remove_columns=['file_name', 'emotion']
+            remove_columns=['file_name', 'label']
         )
 
         dataset.set_format(

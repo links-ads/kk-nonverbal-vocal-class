@@ -1,4 +1,4 @@
-from it_multimodal_er.preprocessing import PreprocessorFactory, PreprocessorConfig
+from non_verbal_voc_class.preprocessing import AudioPreprocessor, PreprocessorConfig
 from datasets import Dataset
 
 def load_dataset(preprocessing_config: PreprocessorConfig) -> Dataset:
@@ -13,9 +13,7 @@ def load_dataset(preprocessing_config: PreprocessorConfig) -> Dataset:
     """
 
     # Initialize preprocessor
-    preprocessor = PreprocessorFactory.get_preprocessor(
-        preprocessor_config=preprocessing_config
-    )
+    preprocessor = AudioPreprocessor(preprocessing_config)
 
     # Preprocess dataset
     dataset = preprocessor.preprocess()

@@ -1,6 +1,6 @@
 import torch
 
-from ..configs import ModelConfig
+from non_verbal_voc_class.configs import ModelConfig
 from .encoders import Wav2Vec2EncoderLayer
 from .base_classifier import BaseClassifier
 from transformers import Wav2Vec2ForSequenceClassification
@@ -20,18 +20,23 @@ class Wav2Vec2Classifier(BaseClassifier):
         self.model = Wav2Vec2ForSequenceClassification.from_pretrained(
             config.audio_model_name,
             use_weighted_layer_sum=config.use_weighted_layer_sum,
+            num_labels=config.num_labels,
         )
 
         # Read the model config
         self.model_config = self.model.wav2vec2.config
-        setattr(self.model_config, 'finetune_method', config.finetune_method)
-        setattr(self.model_config, 'adapter_hidden_dim', config.adapter_hidden_dim)
-        setattr(self.model_config, 'embedding_prompt_dim', config.embedding_prompt_dim)
-        setattr(self.model_config, 'lora_rank', config.lora_rank)
+        if hasattr(config, 'finetune_method'):
+            setattr(self.model_config, 'finetune_method', config.finetune_method)
+        if hasattr(config, 'adapter_hidden_dim'):
+            setattr(self.model_config, 'adapter_hidden_dim', config.adapter_hidden_dim)
+        if hasattr(config, 'embedding_prompt_dim'):
+            setattr(self.model_config, 'embedding_prompt_dim', config.embedding_prompt_dim)
+        if hasattr(config, 'lora_rank'):
+            setattr(self.model_config, 'lora_rank', config.lora_rank)
 
-        self.__add_adapter_and_freeze()
+        self._add_adapter_and_freeze()
 
-    def __add_adapter_and_freeze(self):
+    def _add_adapter_and_freeze(self):
         state_dict = self.model.wav2vec2.state_dict()
 
         # Config encoder layers with adapter, embedding prompt or lora

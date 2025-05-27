@@ -1,5 +1,4 @@
-from torch import Tensor
-from ..configs import ModelConfig
+from non_verbal_voc_class.configs import ModelConfig
 from .base_classifier import BaseClassifier
 from .wav2vec2_classifier import Wav2Vec2Classifier
 from .wavlm_classifier import WavLMClassifier

@@ -3,6 +3,7 @@ from .wavlm import WavLMEncoderLayer
 from .whisper import WhisperEncoderLayer
 from .hubert import HubertEncoderLayer
 from .unispeech import UniSpeechEncoderLayer
+from .factory import EncoderFactory
 
 __all__ = [
     "Wav2Vec2EncoderLayer",
@@ -10,4 +11,5 @@ __all__ = [
     "WhisperEncoderLayer",
     "HubertEncoderLayer",
     "UniSpeechEncoderLayer",
+    "EncoderFactory",
 ]
