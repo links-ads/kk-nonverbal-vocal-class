@@ -11,14 +11,10 @@ def load_dataset(preprocessing_config: PreprocessorConfig) -> Dataset:
     returns:
         - dataset: Dataset, preprocessed dataset.
     """
-
-    # Initialize preprocessor
     preprocessor = AudioPreprocessor(preprocessing_config)
 
-    # Preprocess dataset
     dataset = preprocessor.preprocess()
 
-    # Shuffle dataset
     dataset = dataset.shuffle()
 
     return dataset

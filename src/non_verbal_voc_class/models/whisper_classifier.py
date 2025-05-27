@@ -61,6 +61,7 @@ class WhisperClassifier(BaseClassifier):
     def forward(
             self,
             input_features: torch.FloatTensor,
+            attention_mask: Optional[torch.Tensor] = None,
             head_mask: Optional[torch.Tensor] = None,
             encoder_outputs: Optional[Tuple[Tuple[torch.FloatTensor]]] = None,
             labels: Optional[torch.LongTensor] = None,

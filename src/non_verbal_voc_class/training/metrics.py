@@ -17,8 +17,10 @@ def compute_metrics(eval_pred: EvalPrediction):
 
     it returns a dictionary of metrics.
     """
-
     predictions, labels = eval_pred
+
+    if isinstance(predictions, tuple):
+        predictions = predictions[0]
     predictions = np.argmax(predictions, axis=1)
 
     accuracy = accuracy_score(labels, predictions)

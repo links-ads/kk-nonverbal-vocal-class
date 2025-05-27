@@ -60,7 +60,7 @@ class AudioPreprocessor():
             result = self.feature_extractor(
                 speech_list,
                 sampling_rate=self.target_sampling_rate,
-                # return_attention_mask=True,
+                return_attention_mask=True,
                 max_length=self.max_duration * self.target_sampling_rate,
                 padding="max_length",
             )
@@ -89,11 +89,6 @@ class AudioPreprocessor():
 
         dataset.set_format(
             type="torch",
-            columns=[
-                "input_features", 
-                # "attention_mask",
-                "labels"
-            ]
         )
 
         # save dataset

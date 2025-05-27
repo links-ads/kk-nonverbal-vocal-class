@@ -70,7 +70,7 @@ def main(config_path: str) -> None:
         # Batches
         per_device_train_batch_size=training_config.train_batch_size,
         per_device_eval_batch_size=training_config.eval_batch_size,
-        eval_accumulation_steps=training_config.accummulation_steps,
+        eval_accumulation_steps=training_config.eval_accumulation_steps,
         gradient_accumulation_steps=training_config.gradient_accumulation_steps,
         num_train_epochs=training_config.epochs,
 
@@ -120,7 +120,7 @@ def main(config_path: str) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a model with specified parameters.")
-    parser.add_argument("--config_path", type=str, help="Path to the configuration file.")
+    parser.add_argument("config_path", type=str, help="Path to the configuration file.")
 
     args = parser.parse_args()
     main(
