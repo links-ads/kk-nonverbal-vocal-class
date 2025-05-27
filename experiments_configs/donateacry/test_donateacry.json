@@ -1,0 +1,76 @@
+{
+    "model_config": {
+        "model_type": "wav2vec2",
+        "audio_model_name": "facebook/wav2vec2-base",
+        "finetune_method": "frozen",
+        "adapter_hidden_dim": 64,
+        "embedding_prompt_dim": 10,
+        "lora_rank": 8,
+        "use_weighted_layer_sum": true,
+        "num_labels": 5,
+        "classifier_proj_size": 256,
+        "class_weights": null,
+        "label2id": {
+            "hungry": 0,
+            "samples": 1,
+            "discomfort": 2,
+            "belly_pain": 3,
+            "tired": 4
+        },
+        "id2label":{
+            "0": "hungry",
+            "1": "samples",
+            "2": "discomfort",
+            "3": "belly_pain",
+            "4": "tired"
+        }
+    },
+    "preprocessing_config": {
+        "datasets_path": "/nfs/projects/knock-knock/data/non-speech/donateacry-corpus/donateacry_corpus_cleaned_and_updated_data/",
+        "audio_dataset_path": "samples/",
+        "dataset_name": "donateacry",
+        "label2id": {
+            "hungry": 0,
+            "samples": 1,
+            "discomfort": 2,
+            "belly_pain": 3,
+            "tired": 4
+        },
+        "audio_model_name": "facebook/wav2vec2-base",
+        "max_duration": 4,
+        "target_sampling_rate": 16000,
+        "num_proc": 1,
+        "train_size": 0.8,
+        "test_size": 0.5
+        },
+    "training_config": {
+        "output_model_name": "wav2vec2-donateacry-adapter",
+        "save_path": "./outputs/donateacry",
+        "logging_steps": 100,
+        "train_batch_size": 1,
+        "eval_batch_size": 1,
+        "accummulation_steps": 16,
+        "gradient_accumulation_steps": 16,
+        "epochs": 20,
+        "learning_rate": 1e-4,
+        "weight_decay": 0.01,
+        "adam_beta1": 0.9,
+        "adam_beta2": 0.999,
+        "adam_epsilon": 1e-8,
+        "lr_scheduler_type": "linear",
+        "lr_scheduler_kwargs": {},
+        "collator_type": "audio",
+        "batch_size": 1,
+        "num_epochs": 20,
+        "warmup_steps": 500,
+        "save_steps": 1000,
+        "eval_steps": 500,
+        "output_dir": "./outputs",
+        "save_total_limit": 3,
+        "load_best_model_at_end": true,
+        "metric_for_best_model": "eval_f1",
+        "greater_is_better": true,
+        "early_stopping_patience": 5,
+        "early_stopping_threshold": 0.01
+    }
+}

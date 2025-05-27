@@ -1,0 +1,57 @@
+{
+    "model_config": {
+        "model_type": "wav2vec2",
+        "audio_model_name": "facebook/wav2vec2-base",
+        "finetune_method": "adapter",
+        "adapter_hidden_dim": 64,
+        "embedding_prompt_dim": 10,
+        "lora_rank": 8,
+        "use_weighted_layer_sum": true,
+        "num_labels": 8,
+        "class_weights": null
+    },
+    "preprocessing_config": {
+        "datasets_path": "/nfs/projects/knock-knock/data/non-speech/asvp-esd_babies/",
+        "audio_dataset_path": "samples/",
+        "dataset_name": "asvp-esd_babies",
+        "label2id": {
+            "boredom": 0,
+            "pain": 1,
+            "happy": 2,
+            "sad": 3,
+            "fearful": 4,
+            "surprised": 5,
+            "excited": 6,
+            "disgust": 7,
+            "pleasure": 8,
+            "breath": 9,
+            "neutral": 10,
+            "angry": 11,
+            "disappointment": 12
+        },
+        "audio_model_name": "facebook/wav2vec2-base",
+        "max_duration": 4,
+        "target_sampling_rate": 16000,
+        "num_proc": 1,
+        "train_size": 0.8,
+        "test_size": 0.5
+        },
+    "training_config": {
+        "batch_size": 32,
+        "learning_rate": 1e-4,
+        "num_epochs": 50,
+        "warmup_steps": 500,
+        "weight_decay": 0.01,
+        "gradient_accumulation_steps": 1,
+        "save_steps": 1000,
+        "eval_steps": 500,
+        "logging_steps": 100,
+        "output_dir": "./outputs",
+        "save_total_limit": 3,
+        "load_best_model_at_end": true,
+        "metric_for_best_model": "eval_f1",
+        "greater_is_better": true,
+        "early_stopping_patience": 5,
+        "early_stopping_threshold": 0.01
+    }
+}
