@@ -1,10 +1,11 @@
 from torch.nn import CrossEntropyLoss
 from transformers.modeling_utils import PreTrainedModel
 from transformers.modeling_outputs import SequenceClassifierOutput
-
+from ..configs.model_config import ModelConfig
 
 class BaseClassifier(PreTrainedModel):
-    def __init__(self, config):
+    
+    def __init__(self, config: ModelConfig):
         super(BaseClassifier, self).__init__(config)
         
         assert config.finetune_method in ["adapter", "adapter_l", "embedding_prompt", "lora", "combined", "finetune", "frozen"], "finetune method not available"

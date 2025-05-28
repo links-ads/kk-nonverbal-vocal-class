@@ -32,7 +32,7 @@ def main(config_path: str) -> None:
             None
     """
     # Load configurations
-    config = Config.from_json(config_path)
+    config = Config.from_file(config_path)
     preprocessing_config = config.preprocessing_config
     training_config = config.training_config
     model_config = config.model_config
