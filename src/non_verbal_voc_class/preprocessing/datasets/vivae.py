@@ -66,12 +66,9 @@ def _parse_filename(filename: str) -> Optional[Dict[str, str]]:
             return None
             
         return {
-            'filename': filename,
+            'file_name': filename,
             'speaker': speaker,
-            'emotion': EMOTION_MAPPING[emotion],
-            'intensity': INTENSITY_MAPPING[intensity], 
-            'item_id': item_id,
-            'class': emotion
+            'label': EMOTION_MAPPING[emotion]
         }
     except Exception:
         return None
@@ -80,7 +77,7 @@ def _split_dataset(
     df: pd.DataFrame,
     train_size: float = 0.7,
     test_size: float = 0.15,
-    stratify_col: str = 'class'
+    stratify_col: str = 'label'
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """
     Split dataset into train, validation, and test sets with stratification.
@@ -118,9 +115,9 @@ def _split_dataset(
 
 def _filter_small_classes(df: pd.DataFrame, min_samples: int = 10) -> pd.DataFrame:
     """Filter out classes with fewer than min_samples."""
-    class_counts = df['class'].value_counts()
+    class_counts = df['label'].value_counts()
     valid_classes = class_counts[class_counts >= min_samples].index
-    return df[df['class'].isin(valid_classes)].copy()
+    return df[df['label'].isin(valid_classes)].copy()
 
 
 def _shuffle_dataset(df: pd.DataFrame) -> pd.DataFrame:
@@ -131,7 +128,7 @@ def _shuffle_dataset(df: pd.DataFrame) -> pd.DataFrame:
 def _append_path(df: pd.DataFrame, processed_path: Path) -> pd.DataFrame:
     """Add full file paths to the dataframe."""
     df_copy = df.copy()
-    df_copy['file_path'] = df_copy['filename'].apply(
+    df_copy['file_name'] = df_copy['file_name'].apply(
         lambda x: str(processed_path / x)
     )
     return df_copy
@@ -230,12 +227,12 @@ def preprocess_vivae(
     _save_dataset(train_df, output_path, "train")
     _save_dataset(val_df, output_path, "val")
     _save_dataset(test_df, output_path, "test")
-    
-    class_distribution = df['class'].value_counts().to_string()
-    
+
+    class_distribution = df['label'].value_counts().to_string()
+
     stats = {
         'total_files': processed_files,
-        'total_classes': df['class'].nunique(),
+        'total_classes': df['label'].nunique(),
         'train_samples': len(train_df),
         'val_samples': len(val_df),
         'test_samples': len(test_df),
@@ -249,7 +246,7 @@ def preprocess_vivae(
     print(f"Train: {len(train_df)} samples")
     print(f"Val: {len(val_df)} samples") 
     print(f"Test: {len(test_df)} samples")
-    print(f"Classes: {sorted(df['class'].unique())}")
+    print(f"Classes: {sorted(df['label'].unique())}")
 
 
 def main():

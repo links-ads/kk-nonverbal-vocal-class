@@ -11,7 +11,7 @@
         "class_weights": null
     },
     "preprocessing_config": {
-        "datasets_path": "/nfs/projects/knock-knock/data/non-speech/asvp-esd/",
+        "datasets_path": "asvp-esd/",
         "audio_dataset_path": "samples/",
         "dataset_name": "asvp-esd",
         "label2id": {

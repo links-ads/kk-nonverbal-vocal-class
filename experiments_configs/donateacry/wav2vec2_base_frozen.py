@@ -12,17 +12,15 @@ model_config = dict(
     class_weights=None,
     label2id={
         "hungry":0,
-        "samples":1,
-        "discomfort":2,
-        "belly_pain":3,
-        "tired":4,
+        "discomfort":1,
+        "belly_pain":2,
+        "tired":3,
     },
     id2label={
         0:"hungry",
-        1:"samples",
-        2:"discomfort",
-        3:"belly_pain",
-        4:"tired",
+        1:"discomfort",
+        2:"belly_pain",
+        3:"tired",
     }
 )
 
@@ -33,10 +31,9 @@ preprocessing_config=dict(
     dataset_name="donateacry",
     label2id={
         "hungry": 0,
-        "samples": 1,
-        "discomfort": 2,
-        "belly_pain": 3,
-        "tired": 4,
+        "discomfort": 1,
+        "belly_pain": 2,
+        "tired": 3
     },
     audio_model_name="facebook/wav2vec2-base",
 )

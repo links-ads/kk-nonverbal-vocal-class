@@ -52,6 +52,10 @@ def _create_subsamples(data_path, new_folder):
         
         if not os.path.isdir(class_path):
             continue
+
+        # Skip the samples folder to avoid reading it as a class
+        if class_folder == "samples":
+            continue
             
         for file in os.listdir(class_path):
             if not file.endswith('.wav'):
@@ -114,6 +118,11 @@ def _split_dataset(samples_df, train_size, test_size):
     print("\nTrain set distribution:")
     for label, count in train_counts.items():
         print(f"  {label}: {count} ({count/len(train_df):.2%})")
+
+    val_counts = test_df['label'].value_counts()
+    print("\nValidation set distribution:")
+    for label, count in val_counts.items():
+        print(f"  {label}: {count} ({count/len(test_df):.2%})")
 
     test_counts = test_df['label'].value_counts()
     print("\nTest set distribution:")
@@ -227,9 +236,9 @@ def prepare_donateacry(data_path="data/donateacry-corpus/donateacry_corpus_clean
 
     train_df, val_df, test_df = _split_dataset(samples_df, train_size, test_size)
 
-    train_df = _filter_small_classes(train_df, min_samples=min_samples_per_class)
-    val_df = _filter_small_classes(val_df, min_samples=min_samples_per_class)
-    test_df = _filter_small_classes(test_df, min_samples=min_samples_per_class)
+    # train_df = _filter_small_classes(train_df, min_samples=min_samples_per_class)
+    # val_df = _filter_small_classes(val_df, min_samples=min_samples_per_class)
+    # test_df = _filter_small_classes(test_df, min_samples=min_samples_per_class)
 
     train_df = _drop_columns(train_df)
     val_df = _drop_columns(val_df)

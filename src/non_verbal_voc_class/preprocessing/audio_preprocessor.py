@@ -1,3 +1,4 @@
+import os
 import torch
 import torchaudio
 from .config import PreprocessorConfig
@@ -6,8 +7,12 @@ from pathlib import Path
 from datasets import (
     Dataset,
     load_dataset,
-    load_from_disk,
 )
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv(Path(__file__).parent / '.env')
+
 
 class AudioPreprocessor():
     def __init__(self, preprocessing_config: PreprocessorConfig):
@@ -28,6 +33,10 @@ class AudioPreprocessor():
         self.audio_dataset_path = preprocessing_config.audio_dataset_path
         self.dataset_name = preprocessing_config.dataset_name
 
+        # Load environment variables
+        self.projects_folder_path = os.getenv('PROJECTS_FOLDER_PATH', self.datasets_path)
+        print(f"Using projects folder path: {self.projects_folder_path}")
+
     def preprocess(self) -> Dataset:
         """
         Preprocess the dataset.
@@ -39,7 +48,7 @@ class AudioPreprocessor():
         # Taken from: https://colab.research.google.com/drive/1P2qHb7mwYZSPxbQZ07S7NDH-2vWv38YS?usp=sharing#scrollTo=v_BzbTu_hapW
         def speech_file_to_array_fn(path):
             speech_array, sampling_rate = torchaudio.load(path)
-            
+
             # If there is more than 1 channel in your audio (stereo e. g. emovo)
             if speech_array.shape[0] > 1:
                 # Do a mean of all channels and keep it in one channel
@@ -49,10 +58,9 @@ class AudioPreprocessor():
             speech = resampler(speech_array).squeeze().numpy()
             target_size = int(self.max_duration * self.target_sampling_rate)
 
-
             if len(speech) > target_size:
                 return speech[:target_size]
-            
+
             return speech
 
         def preprocess_function(examples):
@@ -74,9 +82,10 @@ class AudioPreprocessor():
         # if audio_dataset_preprocessed_dir.exists():
         #     dataset = load_from_disk("data/audio_dataset_preprocessed")
         #     return dataset
-        
+
+        dataset_full_path = f"{self.projects_folder_path}/{self.datasets_path}{self.audio_dataset_path}"
         dataset = load_dataset(
-            path=f"{self.datasets_path}{self.audio_dataset_path}",
+            path=dataset_full_path,
             name=f"default-{self.dataset_name}",
         )
 

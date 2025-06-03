@@ -8,7 +8,7 @@ from torch import nn
 from .adapters import Adapter
 
 class WavLMEncoderLayer(nn.Module):
-    def __init__(self, config):
+    def __init__(self, config, has_relative_position_bias=True):
         super().__init__()
         self.attention = wavlm.WavLMAttention(
             embed_dim=config.hidden_size,
@@ -16,7 +16,7 @@ class WavLMEncoderLayer(nn.Module):
             dropout=config.attention_dropout,
             num_buckets=config.num_buckets,
             max_distance=config.max_bucket_distance,
-            has_relative_position_bias=config.has_relative_position_bias,
+            has_relative_position_bias=has_relative_position_bias,
         )
         self.dropout = nn.Dropout(config.hidden_dropout)
         self.layer_norm = nn.LayerNorm(config.hidden_size, eps=config.layer_norm_eps)

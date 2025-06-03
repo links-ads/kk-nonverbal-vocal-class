@@ -1,0 +1,205 @@
+/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/configuration_utils.py:306: UserWarning: Passing `gradient_checkpointing` to a config initialization is deprecated and will be removed in v5 Transformers. Using `model.gradient_checkpointing_enable()` instead, or if you are using the `Trainer` API, pass `gradient_checkpointing=True` in your `TrainingArguments`.
+  warnings.warn(
+/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/configuration_utils.py:306: UserWarning: Passing `gradient_checkpointing` to a config initialization is deprecated and will be removed in v5 Transformers. Using `model.gradient_checkpointing_enable()` instead, or if you are using the `Trainer` API, pass `gradient_checkpointing=True` in your `TrainingArguments`.
+  warnings.warn(
+Some weights of Wav2Vec2ForSequenceClassification were not initialized from the model checkpoint at facebook/wav2vec2-base and are newly initialized: ['classifier.bias', 'classifier.weight', 'layer_weights', 'projector.bias', 'projector.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/accelerate/accelerator.py:449: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler(**kwargs)
+wandb: Currently logged in as: juanjose to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.19.11
+wandb: Run data is saved locally in /nfs/home/marquez/kk-nonverbal-vocal-class/wandb/run-20250602_210201-muqgiral
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run wav2vec2-asvp-esd-adapter
+wandb: ⭐️ View project at https://wandb.ai/juanjose/huggingface
+wandb: 🚀 View run at https://wandb.ai/juanjose/huggingface/runs/muqgiral
+Using projects folder path: /nfs/projects/knock-knock/data/non-speech
+  0%|          | 0/18850 [00:00<?, ?it/s]/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Could not estimate the number of tokens of the input, floating-point operations will not be computed
+  0%|          | 1/18850 [00:00<4:35:03,  1.14it/s]  0%|          | 2/18850 [00:01<3:43:42,  1.40it/s]  0%|          | 3/18850 [00:02<3:26:27,  1.52it/s]  0%|          | 4/18850 [00:02<3:18:11,  1.58it/s]  0%|          | 5/18850 [00:03<3:13:27,  1.62it/s]  0%|          | 6/18850 [00:03<3:10:57,  1.64it/s]  0%|          | 7/18850 [00:04<3:09:06,  1.66it/s]  0%|          | 8/18850 [00:05<3:07:51,  1.67it/s]  0%|          | 9/18850 [00:05<3:07:04,  1.68it/s]  0%|          | 10/18850 [00:06<3:06:43,  1.68it/s]  0%|          | 11/18850 [00:06<3:06:30,  1.68it/s]  0%|          | 12/18850 [00:07<3:07:07,  1.68it/s]  0%|          | 13/18850 [00:07<3:06:46,  1.68it/s]  0%|          | 14/18850 [00:08<3:06:22,  1.68it/s]  0%|          | 15/18850 [00:09<3:06:14,  1.69it/s]  0%|          | 16/18850 [00:09<3:06:01,  1.69it/s]  0%|          | 17/18850 [00:10<3:05:42,  1.69it/s]  0%|          | 18/18850 [00:10<3:05:38,  1.69it/s]  0%|          | 19/18850 [00:11<3:06:07,  1.69it/s]  0%|          | 20/18850 [00:12<3:05:58,  1.69it/s]  0%|          | 21/18850 [00:12<3:06:00,  1.69it/s]  0%|          | 22/18850 [00:13<3:05:52,  1.69it/s]  0%|          | 23/18850 [00:13<3:05:59,  1.69it/s]  0%|          | 24/18850 [00:14<3:05:51,  1.69it/s]  0%|          | 25/18850 [00:15<3:05:42,  1.69it/s]  0%|          | 26/18850 [00:15<3:05:42,  1.69it/s]  0%|          | 27/18850 [00:16<3:05:41,  1.69it/s]  0%|          | 28/18850 [00:16<3:05:35,  1.69it/s]  0%|          | 29/18850 [00:17<3:05:59,  1.69it/s]  0%|          | 30/18850 [00:18<3:05:49,  1.69it/s]  0%|          | 31/18850 [00:18<3:05:54,  1.69it/s]  0%|          | 32/18850 [00:19<3:05:47,  1.69it/s]  0%|          | 33/18850 [00:19<3:05:42,  1.69it/s]  0%|          | 34/18850 [00:20<3:05:33,  1.69it/s]  0%|          | 35/18850 [00:21<3:05:40,  1.69it/s]  0%|          | 36/18850 [00:21<3:05:31,  1.69it/s]  0%|          | 37/18850 [00:22<3:05:33,  1.69it/s]  0%|          | 38/18850 [00:22<3:05:25,  1.69it/s]  0%|          | 39/18850 [00:23<3:05:25,  1.69it/s]  0%|          | 40/18850 [00:23<3:04:58,  1.69it/s]  0%|          | 41/18850 [00:24<3:05:07,  1.69it/s]  0%|          | 42/18850 [00:25<3:05:06,  1.69it/s]  0%|          | 43/18850 [00:25<3:05:06,  1.69it/s]  0%|          | 44/18850 [00:26<3:05:06,  1.69it/s]  0%|          | 45/18850 [00:26<3:05:03,  1.69it/s]  0%|          | 46/18850 [00:27<3:05:00,  1.69it/s]  0%|          | 47/18850 [00:28<3:05:30,  1.69it/s]  0%|          | 48/18850 [00:28<3:05:22,  1.69it/s]  0%|          | 49/18850 [00:29<3:05:21,  1.69it/s]  0%|          | 50/18850 [00:29<3:05:18,  1.69it/s]  0%|          | 51/18850 [00:30<3:05:26,  1.69it/s]  0%|          | 52/18850 [00:31<3:05:23,  1.69it/s]  0%|          | 53/18850 [00:31<3:05:11,  1.69it/s]  0%|          | 54/18850 [00:32<3:05:05,  1.69it/s]  0%|          | 55/18850 [00:32<3:05:05,  1.69it/s]  0%|          | 56/18850 [00:33<3:05:00,  1.69it/s]  0%|          | 57/18850 [00:34<3:04:42,  1.70it/s]  0%|          | 58/18850 [00:34<3:04:11,  1.70it/s]  0%|          | 59/18850 [00:35<3:03:55,  1.70it/s]  0%|          | 60/18850 [00:35<3:03:41,  1.70it/s]  0%|          | 61/18850 [00:36<3:03:27,  1.71it/s]  0%|          | 62/18850 [00:36<3:03:17,  1.71it/s]  0%|          | 63/18850 [00:37<3:03:16,  1.71it/s]  0%|          | 64/18850 [00:38<3:03:46,  1.70it/s]  0%|          | 65/18850 [00:38<3:03:29,  1.71it/s]  0%|          | 66/18850 [00:39<3:03:55,  1.70it/s]  0%|          | 67/18850 [00:39<3:03:36,  1.71it/s]  0%|          | 68/18850 [00:40<3:03:12,  1.71it/s]  0%|          | 69/18850 [00:41<3:03:09,  1.71it/s]  0%|          | 70/18850 [00:41<3:03:06,  1.71it/s]  0%|          | 71/18850 [00:42<3:03:04,  1.71it/s]  0%|          | 72/18850 [00:42<3:03:32,  1.71it/s]  0%|          | 73/18850 [00:43<3:03:19,  1.71it/s]  0%|          | 74/18850 [00:43<3:03:31,  1.71it/s]  0%|          | 75/18850 [00:44<3:03:44,  1.70it/s]  0%|          | 76/18850 [00:45<3:04:01,  1.70it/s]  0%|          | 77/18850 [00:45<3:04:12,  1.70it/s]  0%|          | 78/18850 [00:46<3:04:15,  1.70it/s]  0%|          | 79/18850 [00:46<3:04:28,  1.70it/s]  0%|          | 80/18850 [00:47<3:05:03,  1.69it/s]  0%|          | 81/18850 [00:48<3:04:53,  1.69it/s]  0%|          | 82/18850 [00:48<3:04:47,  1.69it/s]  0%|          | 83/18850 [00:49<3:04:51,  1.69it/s]  0%|          | 84/18850 [00:49<3:05:03,  1.69it/s]  0%|          | 85/18850 [00:50<3:05:07,  1.69it/s]  0%|          | 86/18850 [00:51<3:04:51,  1.69it/s]  0%|          | 87/18850 [00:51<3:04:44,  1.69it/s]  0%|          | 88/18850 [00:52<3:04:44,  1.69it/s]  0%|          | 89/18850 [00:52<3:04:39,  1.69it/s]  0%|          | 90/18850 [00:53<3:04:35,  1.69it/s]  0%|          | 91/18850 [00:54<3:04:02,  1.70it/s]  0%|          | 92/18850 [00:54<3:04:16,  1.70it/s]  0%|          | 93/18850 [00:55<3:04:17,  1.70it/s]  0%|          | 94/18850 [00:55<3:04:20,  1.70it/s]  1%|          | 95/18850 [00:56<3:04:21,  1.70it/s]  1%|          | 96/18850 [00:56<3:04:27,  1.69it/s]  1%|          | 97/18850 [00:57<3:04:30,  1.69it/s]  1%|          | 98/18850 [00:58<3:04:25,  1.69it/s]  1%|          | 99/18850 [00:58<3:04:22,  1.69it/s]  1%|          | 100/18850 [00:59<3:04:21,  1.70it/s]                                                       1%|          | 100/18850 [00:59<3:04:21,  1.70it/s]  1%|          | 101/18850 [00:59<3:04:28,  1.69it/s]  1%|          | 102/18850 [01:00<3:04:24,  1.69it/s]  1%|          | 103/18850 [01:01<3:04:22,  1.69it/s]  1%|          | 104/18850 [01:01<3:04:09,  1.70it/s]  1%|          | 105/18850 [01:02<3:04:12,  1.70it/s]  1%|          | 106/18850 [01:02<3:04:11,  1.70it/s]  1%|          | 107/18850 [01:03<3:03:33,  1.70it/s]  1%|          | 108/18850 [01:04<3:03:41,  1.70it/s]  1%|          | 109/18850 [01:04<3:03:54,  1.70it/s]  1%|          | 110/18850 [01:05<3:03:27,  1.70it/s]  1%|          | 111/18850 [01:05<3:03:46,  1.70it/s]  1%|          | 112/18850 [01:06<3:03:58,  1.70it/s]  1%|          | 113/18850 [01:06<3:04:09,  1.70it/s]  1%|          | 114/18850 [01:07<3:04:12,  1.70it/s]  1%|          | 115/18850 [01:08<3:03:51,  1.70it/s]  1%|          | 116/18850 [01:08<3:03:54,  1.70it/s]  1%|          | 117/18850 [01:09<3:03:55,  1.70it/s]  1%|          | 118/18850 [01:09<3:04:00,  1.70it/s]  1%|          | 119/18850 [01:10<3:04:03,  1.70it/s]  1%|          | 120/18850 [01:11<3:04:05,  1.70it/s]  1%|          | 121/18850 [01:11<3:04:08,  1.70it/s]  1%|          | 122/18850 [01:12<3:03:57,  1.70it/s]  1%|          | 123/18850 [01:12<3:03:57,  1.70it/s]  1%|          | 124/18850 [01:13<3:04:05,  1.70it/s]  1%|          | 125/18850 [01:14<3:04:07,  1.69it/s]  1%|          | 126/18850 [01:14<3:03:58,  1.70it/s]  1%|          | 127/18850 [01:15<3:03:57,  1.70it/s]  1%|          | 128/18850 [01:15<3:04:05,  1.70it/s]  1%|          | 129/18850 [01:16<3:04:08,  1.69it/s]  1%|          | 130/18850 [01:16<3:04:16,  1.69it/s]  1%|          | 131/18850 [01:17<3:03:41,  1.70it/s]  1%|          | 132/18850 [01:18<3:03:46,  1.70it/s]  1%|          | 133/18850 [01:18<3:03:53,  1.70it/s]  1%|          | 134/18850 [01:19<3:04:00,  1.70it/s]  1%|          | 135/18850 [01:19<3:04:16,  1.69it/s]  1%|          | 136/18850 [01:20<3:04:07,  1.69it/s]  1%|          | 137/18850 [01:21<3:04:05,  1.69it/s]  1%|          | 138/18850 [01:21<3:04:19,  1.69it/s]  1%|          | 139/18850 [01:22<3:04:13,  1.69it/s]  1%|          | 140/18850 [01:22<3:04:07,  1.69it/s]  1%|          | 141/18850 [01:23<3:04:10,  1.69it/s]  1%|          | 142/18850 [01:24<3:04:03,  1.69it/s]  1%|          | 143/18850 [01:24<3:04:15,  1.69it/s]  1%|          | 144/18850 [01:25<3:04:14,  1.69it/s]  1%|          | 145/18850 [01:25<3:04:19,  1.69it/s]  1%|          | 146/18850 [01:26<3:04:22,  1.69it/s]  1%|          | 147/18850 [01:27<3:04:18,  1.69it/s]  1%|          | 148/18850 [01:27<3:04:16,  1.69it/s]  1%|          | 149/18850 [01:28<3:04:22,  1.69it/s]  1%|          | 150/18850 [01:28<3:03:38,  1.70it/s]  1%|          | 151/18850 [01:29<3:03:52,  1.69it/s]  1%|          | 152/18850 [01:29<3:04:03,  1.69it/s]  1%|          | 153/18850 [01:30<3:04:11,  1.69it/s]  1%|          | 154/18850 [01:31<3:04:25,  1.69it/s]  1%|          | 155/18850 [01:31<3:04:15,  1.69it/s]  1%|          | 156/18850 [01:32<3:04:22,  1.69it/s]  1%|          | 157/18850 [01:32<3:04:49,  1.69it/s]  1%|          | 158/18850 [01:33<3:04:42,  1.69it/s]  1%|          | 159/18850 [01:34<3:04:40,  1.69it/s]  1%|          | 160/18850 [01:34<3:04:29,  1.69it/s]  1%|          | 161/18850 [01:35<3:04:23,  1.69it/s]  1%|          | 162/18850 [01:35<3:04:14,  1.69it/s]  1%|          | 163/18850 [01:36<3:04:17,  1.69it/s]  1%|          | 164/18850 [01:37<3:04:19,  1.69it/s]  1%|          | 165/18850 [01:37<3:04:16,  1.69it/s]  1%|          | 166/18850 [01:38<3:04:09,  1.69it/s]  1%|          | 167/18850 [01:38<3:03:56,  1.69it/s]  1%|          | 168/18850 [01:39<3:04:00,  1.69it/s]  1%|          | 169/18850 [01:40<3:04:12,  1.69it/s]  1%|          | 170/18850 [01:40<3:04:12,  1.69it/s]  1%|          | 171/18850 [01:41<3:04:25,  1.69it/s]  1%|          | 172/18850 [01:41<3:04:18,  1.69it/s]  1%|          | 173/18850 [01:42<3:04:07,  1.69it/s]  1%|          | 174/18850 [01:43<3:04:08,  1.69it/s]  1%|          | 175/18850 [01:43<3:04:17,  1.69it/s]  1%|          | 176/18850 [01:44<3:04:15,  1.69it/s]  1%|          | 177/18850 [01:44<3:04:34,  1.69it/s]  1%|          | 178/18850 [01:45<3:04:25,  1.69it/s]  1%|          | 179/18850 [01:45<3:04:24,  1.69it/s]  1%|          | 180/18850 [01:46<3:04:12,  1.69it/s]  1%|          | 181/18850 [01:47<3:03:25,  1.70it/s]  1%|          | 182/18850 [01:47<3:03:35,  1.69it/s]  1%|          | 183/18850 [01:48<3:03:48,  1.69it/s]  1%|          | 184/18850 [01:48<3:03:53,  1.69it/s]  1%|          | 185/18850 [01:49<3:04:04,  1.69it/s]  1%|          | 186/18850 [01:50<3:04:09,  1.69it/s]  1%|          | 187/18850 [01:50<3:04:05,  1.69it/s]  1%|          | 188/18850 [01:51<3:04:13,  1.69it/s]  1%|          | 189/18850 [01:51<3:04:29,  1.69it/s]  1%|          | 190/18850 [01:52<3:04:24,  1.69it/s]  1%|          | 191/18850 [01:53<3:04:18,  1.69it/s]  1%|          | 192/18850 [01:53<3:04:04,  1.69it/s]  1%|          | 193/18850 [01:54<3:03:26,  1.70it/s]  1%|          | 194/18850 [01:54<3:03:41,  1.69it/s]  1%|          | 195/18850 [01:55<3:04:03,  1.69it/s]  1%|          | 196/18850 [01:56<3:04:05,  1.69it/s]  1%|          | 197/18850 [01:56<3:04:22,  1.69it/s]  1%|          | 198/18850 [01:57<3:04:21,  1.69it/s]  1%|          | 199/18850 [01:57<3:04:10,  1.69it/s]  1%|          | 200/18850 [01:58<3:04:02,  1.69it/s]                                                       1%|          | 200/18850 [01:58<3:04:02,  1.69it/s]  1%|          | 201/18850 [01:58<3:04:01,  1.69it/s]  1%|          | 202/18850 [01:59<3:03:58,  1.69it/s]  1%|          | 203/18850 [02:00<3:03:55,  1.69it/s]  1%|          | 204/18850 [02:00<3:03:51,  1.69it/s]  1%|          | 205/18850 [02:01<3:03:52,  1.69it/s]  1%|          | 206/18850 [02:01<3:03:55,  1.69it/s]  1%|          | 207/18850 [02:02<3:03:56,  1.69it/s]  1%|          | 208/18850 [02:03<3:03:44,  1.69it/s]  1%|          | 209/18850 [02:03<3:04:02,  1.69it/s]  1%|          | 210/18850 [02:04<3:03:49,  1.69it/s]  1%|          | 211/18850 [02:04<3:03:43,  1.69it/s]  1%|          | 212/18850 [02:05<3:03:52,  1.69it/s]  1%|          | 213/18850 [02:06<3:04:07,  1.69it/s]  1%|          | 214/18850 [02:06<3:04:04,  1.69it/s]  1%|          | 215/18850 [02:07<3:03:55,  1.69it/s]  1%|          | 216/18850 [02:07<3:03:18,  1.69it/s]  1%|          | 217/18850 [02:08<3:03:39,  1.69it/s]  1%|          | 218/18850 [02:09<3:02:58,  1.70it/s]  1%|          | 219/18850 [02:09<3:02:39,  1.70it/s]  1%|          | 220/18850 [02:10<3:02:27,  1.70it/s]  1%|          | 221/18850 [02:10<3:02:13,  1.70it/s]  1%|          | 222/18850 [02:11<3:02:09,  1.70it/s]  1%|          | 223/18850 [02:11<3:02:24,  1.70it/s]  1%|          | 224/18850 [02:12<3:02:42,  1.70it/s]  1%|          | 225/18850 [02:13<3:02:19,  1.70it/s]  1%|          | 226/18850 [02:13<3:02:48,  1.70it/s]  1%|          | 227/18850 [02:14<3:03:21,  1.69it/s]  1%|          | 228/18850 [02:14<3:03:29,  1.69it/s]  1%|          | 229/18850 [02:15<3:03:46,  1.69it/s]  1%|          | 230/18850 [02:16<3:03:51,  1.69it/s]  1%|          | 231/18850 [02:16<3:03:59,  1.69it/s]  1%|          | 232/18850 [02:17<3:03:55,  1.69it/s]  1%|          | 233/18850 [02:17<3:03:53,  1.69it/s]  1%|          | 234/18850 [02:18<3:03:49,  1.69it/s]  1%|          | 235/18850 [02:19<3:03:44,  1.69it/s]  1%|▏         | 236/18850 [02:19<3:04:06,  1.68it/s]  1%|▏         | 237/18850 [02:20<3:04:04,  1.69it/s]  1%|▏         | 238/18850 [02:20<3:03:50,  1.69it/s]  1%|▏         | 239/18850 [02:21<3:03:44,  1.69it/s]  1%|▏         | 240/18850 [02:22<3:03:49,  1.69it/s]  1%|▏         | 241/18850 [02:22<3:03:51,  1.69it/s]  1%|▏         | 242/18850 [02:23<3:03:42,  1.69it/s]  1%|▏         | 243/18850 [02:23<3:04:41,  1.68it/s]  1%|▏         | 244/18850 [02:24<3:24:54,  1.51it/s]  1%|▏         | 245/18850 [02:25<3:36:57,  1.43it/s]  1%|▏         | 246/18850 [02:26<3:26:57,  1.50it/s]  1%|▏         | 247/18850 [02:26<3:19:54,  1.55it/s]  1%|▏         | 248/18850 [02:27<3:15:02,  1.59it/s]  1%|▏         | 249/18850 [02:27<3:11:55,  1.62it/s]  1%|▏         | 250/18850 [02:28<3:10:46,  1.63it/s]  1%|▏         | 251/18850 [02:29<3:09:32,  1.64it/s]  1%|▏         | 252/18850 [02:29<3:07:58,  1.65it/s]  1%|▏         | 253/18850 [02:30<3:22:39,  1.53it/s]  1%|▏         | 254/18850 [02:30<3:16:29,  1.58it/s]  1%|▏         | 255/18850 [02:31<3:12:09,  1.61it/s]  1%|▏         | 256/18850 [02:32<3:09:08,  1.64it/s]  1%|▏         | 257/18850 [02:32<3:07:16,  1.65it/s]  1%|▏         | 258/18850 [02:33<3:06:10,  1.66it/s]  1%|▏         | 259/18850 [02:33<3:05:18,  1.67it/s]  1%|▏         | 260/18850 [02:34<3:04:49,  1.68it/s]  1%|▏         | 261/18850 [02:35<3:05:02,  1.67it/s]  1%|▏         | 262/18850 [02:35<3:04:14,  1.68it/s]  1%|▏         | 263/18850 [02:36<3:03:58,  1.68it/s]  1%|▏         | 264/18850 [02:36<3:03:39,  1.69it/s]  1%|▏         | 265/18850 [02:37<3:03:36,  1.69it/s]  1%|▏         | 266/18850 [02:38<3:03:27,  1.69it/s]  1%|▏         | 267/18850 [02:38<3:03:26,  1.69it/s]  1%|▏         | 268/18850 [02:39<3:03:32,  1.69it/s]  1%|▏         | 269/18850 [02:39<3:03:35,  1.69it/s]  1%|▏         | 270/18850 [02:40<3:03:36,  1.69it/s]  1%|▏         | 271/18850 [02:41<3:03:36,  1.69it/s]  1%|▏         | 272/18850 [02:41<3:03:43,  1.69it/s]  1%|▏         | 273/18850 [02:42<3:03:45,  1.68it/s]  1%|▏         | 274/18850 [02:42<3:03:44,  1.68it/s]  1%|▏         | 275/18850 [02:43<3:03:42,  1.69it/s]  1%|▏         | 276/18850 [02:44<3:04:12,  1.68it/s]  1%|▏         | 277/18850 [02:44<3:04:05,  1.68it/s]  1%|▏         | 278/18850 [02:45<3:03:49,  1.68it/s]  1%|▏         | 279/18850 [02:45<3:03:54,  1.68it/s]  1%|▏         | 280/18850 [02:46<3:03:46,  1.68it/s]  1%|▏         | 281/18850 [02:46<3:03:49,  1.68it/s]  1%|▏         | 282/18850 [02:47<3:03:47,  1.68it/s]  2%|▏         | 283/18850 [02:48<3:03:48,  1.68it/s]  2%|▏         | 284/18850 [02:48<3:03:45,  1.68it/s]  2%|▏         | 285/18850 [02:49<3:04:00,  1.68it/s]  2%|▏         | 286/18850 [02:49<3:03:36,  1.69it/s]  2%|▏         | 287/18850 [02:50<3:03:38,  1.68it/s]  2%|▏         | 288/18850 [02:51<3:03:40,  1.68it/s]  2%|▏         | 289/18850 [02:51<3:03:40,  1.68it/s]  2%|▏         | 290/18850 [02:52<3:03:38,  1.68it/s]  2%|▏         | 291/18850 [02:52<3:04:01,  1.68it/s]  2%|▏         | 292/18850 [02:53<3:03:53,  1.68it/s]  2%|▏         | 293/18850 [02:54<3:03:37,  1.68it/s]  2%|▏         | 294/18850 [02:54<3:03:23,  1.69it/s]  2%|▏         | 295/18850 [02:55<3:03:28,  1.69it/s]  2%|▏         | 296/18850 [02:55<3:03:18,  1.69it/s]  2%|▏         | 297/18850 [02:56<3:03:15,  1.69it/s]  2%|▏         | 298/18850 [02:57<3:03:20,  1.69it/s]  2%|▏         | 299/18850 [02:57<3:03:20,  1.69it/s]  2%|▏         | 300/18850 [02:58<3:02:43,  1.69it/s]                                                       2%|▏         | 300/18850 [02:58<3:02:43,  1.69it/s]  2%|▏         | 301/18850 [02:58<3:03:01,  1.69it/s]  2%|▏         | 302/18850 [02:59<3:03:07,  1.69it/s]  2%|▏         | 303/18850 [03:00<3:03:01,  1.69it/s]  2%|▏         | 304/18850 [03:00<3:03:13,  1.69it/s]  2%|▏         | 305/18850 [03:01<3:03:14,  1.69it/s]  2%|▏         | 306/18850 [03:01<3:03:27,  1.68it/s]  2%|▏         | 307/18850 [03:02<3:03:20,  1.69it/s]  2%|▏         | 308/18850 [03:02<3:03:23,  1.69it/s]  2%|▏         | 309/18850 [03:03<3:06:06,  1.66it/s]  2%|▏         | 310/18850 [03:04<3:04:43,  1.67it/s]  2%|▏         | 311/18850 [03:04<3:03:45,  1.68it/s]  2%|▏         | 312/18850 [03:05<3:03:21,  1.69it/s]  2%|▏         | 313/18850 [03:05<3:02:54,  1.69it/s]  2%|▏         | 314/18850 [03:06<3:02:43,  1.69it/s]  2%|▏         | 315/18850 [03:07<3:02:42,  1.69it/s]  2%|▏         | 316/18850 [03:07<3:02:48,  1.69it/s]  2%|▏         | 317/18850 [03:08<3:02:45,  1.69it/s]  2%|▏         | 318/18850 [03:08<3:02:50,  1.69it/s]  2%|▏         | 319/18850 [03:09<3:02:25,  1.69it/s]  2%|▏         | 320/18850 [03:10<3:02:45,  1.69it/s]  2%|▏         | 321/18850 [03:10<3:03:00,  1.69it/s]  2%|▏         | 322/18850 [03:11<3:03:06,  1.69it/s]  2%|▏         | 323/18850 [03:11<3:03:21,  1.68it/s]  2%|▏         | 324/18850 [03:12<3:03:21,  1.68it/s]  2%|▏         | 325/18850 [03:13<3:03:17,  1.68it/s]  2%|▏         | 326/18850 [03:13<3:03:11,  1.69it/s]  2%|▏         | 327/18850 [03:14<3:03:04,  1.69it/s]  2%|▏         | 328/18850 [03:14<3:03:12,  1.69it/s]  2%|▏         | 329/18850 [03:15<3:03:11,  1.69it/s]  2%|▏         | 330/18850 [03:16<3:03:07,  1.69it/s]  2%|▏         | 331/18850 [03:16<3:03:07,  1.69it/s]  2%|▏         | 332/18850 [03:17<3:03:14,  1.68it/s]  2%|▏         | 333/18850 [03:17<3:03:18,  1.68it/s]  2%|▏         | 334/18850 [03:18<3:03:11,  1.68it/s]  2%|▏         | 335/18850 [03:19<3:02:39,  1.69it/s]  2%|▏         | 336/18850 [03:19<3:02:47,  1.69it/s]  2%|▏         | 337/18850 [03:20<3:02:50,  1.69it/s]  2%|▏         | 338/18850 [03:20<3:03:27,  1.68it/s]  2%|▏         | 339/18850 [03:21<3:03:18,  1.68it/s]  2%|▏         | 340/18850 [03:21<3:03:01,  1.69it/s]  2%|▏         | 341/18850 [03:22<3:02:54,  1.69it/s]  2%|▏         | 342/18850 [03:23<3:02:40,  1.69it/s]  2%|▏         | 343/18850 [03:23<3:02:43,  1.69it/s]  2%|▏         | 344/18850 [03:24<3:02:46,  1.69it/s]  2%|▏         | 345/18850 [03:24<3:02:55,  1.69it/s]  2%|▏         | 346/18850 [03:25<3:02:50,  1.69it/s]  2%|▏         | 347/18850 [03:26<3:02:56,  1.69it/s]  2%|▏         | 348/18850 [03:26<3:02:53,  1.69it/s]  2%|▏         | 349/18850 [03:27<3:02:58,  1.69it/s]  2%|▏         | 350/18850 [03:27<3:02:54,  1.69it/s]  2%|▏         | 351/18850 [03:28<3:02:57,  1.69it/s]  2%|▏         | 352/18850 [03:29<3:02:51,  1.69it/s]  2%|▏         | 353/18850 [03:29<3:02:59,  1.68it/s]  2%|▏         | 354/18850 [03:30<3:02:56,  1.69it/s]  2%|▏         | 355/18850 [03:30<3:02:59,  1.68it/s]  2%|▏         | 356/18850 [03:31<3:02:51,  1.69it/s]  2%|▏         | 357/18850 [03:32<3:02:57,  1.68it/s]  2%|▏         | 358/18850 [03:32<3:02:54,  1.68it/s]  2%|▏         | 359/18850 [03:33<3:02:56,  1.68it/s]  2%|▏         | 360/18850 [03:33<3:02:52,  1.69it/s]  2%|▏         | 361/18850 [03:34<3:02:54,  1.68it/s]  2%|▏         | 362/18850 [03:35<3:02:23,  1.69it/s]  2%|▏         | 363/18850 [03:35<3:02:36,  1.69it/s]  2%|▏         | 364/18850 [03:36<3:02:46,  1.69it/s]  2%|▏         | 365/18850 [03:36<3:02:56,  1.68it/s]  2%|▏         | 366/18850 [03:37<3:03:19,  1.68it/s]  2%|▏         | 367/18850 [03:38<3:03:05,  1.68it/s]  2%|▏         | 368/18850 [03:38<3:02:49,  1.68it/s]  2%|▏         | 369/18850 [03:39<3:02:52,  1.68it/s]  2%|▏         | 370/18850 [03:39<3:02:39,  1.69it/s]  2%|▏         | 371/18850 [03:40<3:02:45,  1.69it/s]  2%|▏         | 372/18850 [03:40<3:02:45,  1.69it/s]  2%|▏         | 373/18850 [03:41<3:03:01,  1.68it/s]  2%|▏         | 374/18850 [03:42<3:02:52,  1.68it/s]  2%|▏         | 375/18850 [03:42<3:02:51,  1.68it/s]  2%|▏         | 376/18850 [03:43<3:02:24,  1.69it/s]  2%|▏         | 377/18850 [03:43<2:58:26,  1.73it/s]{'loss': 2.4248, 'grad_norm': 0.9389835596084595, 'learning_rate': 9.946949602122017e-05, 'epoch': 0.27}
+{'loss': 2.2555, 'grad_norm': 1.61232590675354, 'learning_rate': 9.893899204244032e-05, 'epoch': 0.53}
+{'loss': 2.1793, 'grad_norm': 1.4857162237167358, 'learning_rate': 9.840848806366049e-05, 'epoch': 0.8}
+
+  0%|          | 0/187 [00:00<?, ?it/s][A
+  2%|▏         | 3/187 [00:00<00:06, 28.51it/s][A
+  3%|▎         | 6/187 [00:00<00:08, 20.92it/s][A
+  5%|▍         | 9/187 [00:00<00:09, 19.42it/s][A
+  6%|▋         | 12/187 [00:00<00:09, 18.82it/s][A
+  7%|▋         | 14/187 [00:00<00:09, 18.57it/s][A
+  9%|▊         | 16/187 [00:00<00:09, 18.03it/s][A
+ 10%|▉         | 18/187 [00:00<00:09, 17.81it/s][A
+ 11%|█         | 20/187 [00:01<00:09, 17.46it/s][A
+ 12%|█▏        | 22/187 [00:01<00:09, 17.16it/s][A
+ 13%|█▎        | 24/187 [00:01<00:09, 17.19it/s][A
+ 14%|█▍        | 26/187 [00:01<00:09, 16.81it/s][A
+ 15%|█▍        | 28/187 [00:01<00:09, 16.65it/s][A
+ 16%|█▌        | 30/187 [00:01<00:09, 16.44it/s][A
+ 17%|█▋        | 32/187 [00:01<00:09, 16.35it/s][A
+ 18%|█▊        | 34/187 [00:01<00:09, 16.32it/s][A
+ 19%|█▉        | 36/187 [00:02<00:09, 16.04it/s][A
+ 20%|██        | 38/187 [00:02<00:09, 15.82it/s][A
+ 21%|██▏       | 40/187 [00:02<00:09, 15.58it/s][A
+ 22%|██▏       | 42/187 [00:02<00:09, 15.49it/s][A
+ 24%|██▎       | 44/187 [00:02<00:09, 15.27it/s][A
+ 25%|██▍       | 46/187 [00:02<00:09, 15.11it/s][A
+ 26%|██▌       | 48/187 [00:02<00:09, 15.10it/s][A
+ 27%|██▋       | 50/187 [00:02<00:09, 14.91it/s][A
+ 28%|██▊       | 52/187 [00:03<00:09, 14.81it/s][A
+ 29%|██▉       | 54/187 [00:03<00:09, 14.69it/s][A
+ 30%|██▉       | 56/187 [00:03<00:09, 14.51it/s][A
+ 31%|███       | 58/187 [00:03<00:09, 14.33it/s][A
+ 32%|███▏      | 60/187 [00:03<00:08, 14.40it/s][A
+ 33%|███▎      | 62/187 [00:03<00:10, 11.63it/s][A
+ 34%|███▍      | 64/187 [00:04<00:10, 11.65it/s][A
+ 35%|███▌      | 66/187 [00:04<00:09, 12.38it/s][A
+ 36%|███▋      | 68/187 [00:04<00:09, 12.66it/s][A
+ 37%|███▋      | 70/187 [00:04<00:10, 10.71it/s][A
+ 39%|███▊      | 72/187 [00:04<00:10, 10.81it/s][A
+ 40%|███▉      | 74/187 [00:04<00:09, 11.69it/s][A
+ 41%|████      | 76/187 [00:05<00:10, 10.49it/s][A
+ 42%|████▏     | 78/187 [00:05<00:11,  9.82it/s][A
+ 43%|████▎     | 80/187 [00:05<00:09, 10.77it/s][A
+ 44%|████▍     | 82/187 [00:05<00:10, 10.00it/s][A
+ 45%|████▍     | 84/187 [00:05<00:09, 10.61it/s][A
+ 46%|████▌     | 86/187 [00:06<00:11,  9.14it/s][A
+ 47%|████▋     | 87/187 [00:06<00:10,  9.26it/s][A
+ 48%|████▊     | 89/187 [00:06<00:10,  8.91it/s][A
+ 48%|████▊     | 90/187 [00:06<00:10,  8.84it/s][A
+ 49%|████▉     | 92/187 [00:07<00:11,  8.11it/s][A
+ 50%|████▉     | 93/187 [00:07<00:11,  7.88it/s][A
+ 51%|█████     | 95/187 [00:07<00:12,  7.12it/s][A
+ 51%|█████▏    | 96/187 [00:07<00:12,  7.56it/s][A
+ 52%|█████▏    | 97/187 [00:07<00:12,  7.34it/s][A
+ 52%|█████▏    | 98/187 [00:07<00:11,  7.47it/s][A
+ 53%|█████▎    | 99/187 [00:08<00:12,  7.15it/s][A
+ 53%|█████▎    | 100/187 [00:08<00:11,  7.40it/s][A
+ 54%|█████▍    | 101/187 [00:08<00:12,  7.03it/s][A
+ 55%|█████▍    | 102/187 [00:08<00:11,  7.28it/s][A
+ 55%|█████▌    | 103/187 [00:08<00:12,  6.67it/s][A
+ 56%|█████▌    | 104/187 [00:08<00:11,  7.25it/s][A
+ 56%|█████▌    | 105/187 [00:08<00:13,  6.26it/s][A
+ 57%|█████▋    | 107/187 [00:09<00:12,  6.38it/s][A
+ 58%|█████▊    | 109/187 [00:09<00:12,  6.13it/s][A
+ 59%|█████▉    | 110/187 [00:09<00:11,  6.67it/s][A
+ 59%|█████▉    | 111/187 [00:09<00:13,  5.45it/s][A
+ 60%|██████    | 113/187 [00:10<00:13,  5.62it/s][A
+ 61%|██████▏   | 115/187 [00:10<00:12,  5.61it/s][A
+ 63%|██████▎   | 117/187 [00:11<00:12,  5.54it/s][A
+ 64%|██████▎   | 119/187 [00:11<00:12,  5.44it/s][A
+ 64%|██████▍   | 120/187 [00:11<00:11,  5.75it/s][A
+ 65%|██████▍   | 121/187 [00:11<00:13,  4.85it/s][A
+ 65%|██████▌   | 122/187 [00:12<00:12,  5.39it/s][A
+ 66%|██████▌   | 123/187 [00:12<00:15,  4.03it/s][A
+ 66%|██████▋   | 124/187 [00:12<00:15,  4.12it/s][A
+ 67%|██████▋   | 125/187 [00:12<00:13,  4.59it/s][A
+ 67%|██████▋   | 126/187 [00:13<00:13,  4.37it/s][A
+ 68%|██████▊   | 127/187 [00:13<00:12,  4.87it/s][A
+ 68%|██████▊   | 128/187 [00:13<00:12,  4.55it/s][A
+ 69%|██████▉   | 129/187 [00:13<00:15,  3.84it/s][A
+ 70%|██████▉   | 130/187 [00:14<00:17,  3.25it/s][A
+ 70%|███████   | 131/187 [00:14<00:18,  3.10it/s][A
+ 71%|███████   | 132/187 [00:14<00:17,  3.20it/s][A
+ 71%|███████   | 133/187 [00:15<00:15,  3.40it/s][A
+ 72%|███████▏  | 134/187 [00:15<00:15,  3.45it/s][A
+ 72%|███████▏  | 135/187 [00:15<00:14,  3.66it/s][A
+ 73%|███████▎  | 136/187 [00:15<00:14,  3.43it/s][A
+ 73%|███████▎  | 137/187 [00:16<00:16,  3.03it/s][A
+ 74%|███████▍  | 138/187 [00:16<00:16,  3.02it/s][A
+ 74%|███████▍  | 139/187 [00:17<00:15,  3.02it/s][A
+ 75%|███████▍  | 140/187 [00:17<00:15,  3.00it/s][A
+ 75%|███████▌  | 141/187 [00:17<00:15,  3.01it/s][A
+ 76%|███████▌  | 142/187 [00:18<00:14,  3.01it/s][A
+ 76%|███████▋  | 143/187 [00:18<00:14,  3.02it/s][A
+ 77%|███████▋  | 144/187 [00:18<00:13,  3.13it/s][A
+ 78%|███████▊  | 145/187 [00:19<00:13,  3.13it/s][A
+ 78%|███████▊  | 146/187 [00:19<00:13,  3.13it/s][A
+ 79%|███████▊  | 147/187 [00:19<00:12,  3.12it/s][A
+ 79%|███████▉  | 148/187 [00:20<00:12,  3.08it/s][A
+ 80%|███████▉  | 149/187 [00:20<00:12,  3.07it/s][A
+ 80%|████████  | 150/187 [00:20<00:11,  3.14it/s][A
+ 81%|████████  | 151/187 [00:20<00:11,  3.11it/s][A
+ 81%|████████▏ | 152/187 [00:21<00:11,  3.03it/s][A
+ 82%|████████▏ | 153/187 [00:21<00:11,  3.06it/s][A
+ 82%|████████▏ | 154/187 [00:21<00:10,  3.00it/s][A
+ 83%|████████▎ | 155/187 [00:22<00:10,  3.04it/s][A
+ 83%|████████▎ | 156/187 [00:22<00:09,  3.14it/s][A
+ 84%|████████▍ | 157/187 [00:22<00:09,  3.11it/s][A
+ 84%|████████▍ | 158/187 [00:23<00:09,  3.14it/s][A
+ 85%|████████▌ | 159/187 [00:23<00:08,  3.17it/s][A
+ 86%|████████▌ | 160/187 [00:23<00:08,  3.14it/s][A
+ 86%|████████▌ | 161/187 [00:24<00:08,  3.07it/s][A
+ 87%|████████▋ | 162/187 [00:24<00:07,  3.14it/s][A
+ 87%|████████▋ | 163/187 [00:24<00:07,  3.06it/s][A
+ 88%|████████▊ | 164/187 [00:25<00:07,  3.12it/s][A
+ 88%|████████▊ | 165/187 [00:25<00:07,  3.08it/s][A
+ 89%|████████▉ | 166/187 [00:25<00:06,  3.02it/s][A
+ 89%|████████▉ | 167/187 [00:26<00:06,  2.96it/s][ATraceback (most recent call last):
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 126, in <module>
+    main(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 105, in main
+    trainer.train()
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 2123, in train
+    return inner_training_loop(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 2573, in _inner_training_loop
+    self._maybe_log_save_evaluate(tr_loss, grad_norm, model, trial, epoch, ignore_keys_for_eval)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 3004, in _maybe_log_save_evaluate
+    metrics = self._evaluate(trial, ignore_keys_for_eval)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 2958, in _evaluate
+    metrics = self.evaluate(ignore_keys=ignore_keys_for_eval)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 3975, in evaluate
+    output = eval_loop(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 4196, in evaluation_loop
+    all_preds.add(logits)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 322, in add
+    self.tensors = nested_concat(self.tensors, tensors, padding_index=self.padding_index)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in nested_concat
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in <genexpr>
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in nested_concat
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in <genexpr>
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 136, in nested_concat
+    return torch_pad_and_concatenate(tensors, new_tensors, padding_index=padding_index)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 94, in torch_pad_and_concatenate
+    return torch.cat((tensor1, tensor2), dim=0)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 688.00 MiB. GPU 0 has a total capacity of 19.50 GiB of which 625.88 MiB is free. Including non-PyTorch memory, this process has 18.87 GiB memory in use. Process 3596194 has 15.10 GiB memory in use. Process 3596371 has 5.84 GiB memory in use. Of the allocated memory 17.17 GiB is allocated by PyTorch, and 1.58 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 126, in <module>
+    main(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 105, in main
+    trainer.train()
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 2123, in train
+    return inner_training_loop(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 2573, in _inner_training_loop
+    self._maybe_log_save_evaluate(tr_loss, grad_norm, model, trial, epoch, ignore_keys_for_eval)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 3004, in _maybe_log_save_evaluate
+    metrics = self._evaluate(trial, ignore_keys_for_eval)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 2958, in _evaluate
+    metrics = self.evaluate(ignore_keys=ignore_keys_for_eval)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 3975, in evaluate
+    output = eval_loop(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer.py", line 4196, in evaluation_loop
+    all_preds.add(logits)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 322, in add
+    self.tensors = nested_concat(self.tensors, tensors, padding_index=self.padding_index)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in nested_concat
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in <genexpr>
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in nested_concat
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 134, in <genexpr>
+    return type(tensors)(nested_concat(t, n, padding_index=padding_index) for t, n in zip(tensors, new_tensors))
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 136, in nested_concat
+    return torch_pad_and_concatenate(tensors, new_tensors, padding_index=padding_index)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/trainer_pt_utils.py", line 94, in torch_pad_and_concatenate
+    return torch.cat((tensor1, tensor2), dim=0)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 688.00 MiB. GPU 0 has a total capacity of 19.50 GiB of which 625.88 MiB is free. Including non-PyTorch memory, this process has 18.87 GiB memory in use. Process 3596194 has 15.10 GiB memory in use. Process 3596371 has 5.84 GiB memory in use. Of the allocated memory 17.17 GiB is allocated by PyTorch, and 1.58 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mwav2vec2-asvp-esd-adapter[0m at: [34mhttps://wandb.ai/juanjose/huggingface/runs/muqgiral[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250602_210201-muqgiral/logs[0m

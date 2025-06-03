@@ -1,0 +1,17 @@
+Some weights of WavLMForSequenceClassification were not initialized from the model checkpoint at microsoft/wavlm-base-plus and are newly initialized: ['classifier.bias', 'classifier.weight', 'layer_weights', 'projector.bias', 'projector.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Using projects folder path: /nfs/projects/knock-knock/data/non-speech
+Traceback (most recent call last):
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 126, in <module>
+    main(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 49, in main
+    model = ModelFactory.create_model(
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/models/factory.py", line 19, in create_model
+    return WavLMClassifier(config)
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/models/wavlm_classifier.py", line 37, in __init__
+    self.__add_adapter_and_freeze()
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/models/wavlm_classifier.py", line 44, in __add_adapter_and_freeze
+    [WavLMEncoderLayer(self.model_config, has_relative_position_bias=(i == 0)) for i in range(self.model_config.num_hidden_layers)]
+  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/models/wavlm_classifier.py", line 44, in <listcomp>
+    [WavLMEncoderLayer(self.model_config, has_relative_position_bias=(i == 0)) for i in range(self.model_config.num_hidden_layers)]
+TypeError: WavLMEncoderLayer.__init__() got an unexpected keyword argument 'has_relative_position_bias'

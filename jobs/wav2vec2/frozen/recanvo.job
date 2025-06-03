@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=recanvo-wav2vec2_base_frozen
+#SBATCH --output=logs/recanvo-wav2vec2_base_frozen_%j.out            
+#SBATCH --time=168:00:00                  
+#SBATCH --mem=32G                          
+#SBATCH --ntasks=1                        
+#SBATCH --gpus=3g.40gb:1                      
+#SBATCH --cpus-per-task=4                 
+#SBATCH --partition=A100                  
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=msteams:marquez       
+#SBATCH --qos=high   
+
+source .venv/bin/activate
+
+python -BO train.py "experiments_configs/recanvo/wav2vec2_base_frozen.py"
+ 
