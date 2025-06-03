@@ -12,21 +12,19 @@ model_config = dict(
     class_weights=None,
     label2id={
         "ahem": 0,
-        "samples": 1,
-        "confirm": 2,
-        "continuous": 3,
-        "decline": 4,
-        "hush": 5,
-        "psst": 6
+        "confirm": 1,
+        "continuous": 2,
+        "decline": 3,
+        "hush": 4,
+        "psst": 5
     },
     id2label={
         0:"ahem",
-        1:"samples",
-        2:"confirm",
-        3:"continuous",
-        4:"decline",
-        5:"hush",
-        6:"psst"
+        1:"confirm",
+        2:"continuous",
+        3:"decline",
+        4:"hush",
+        5:"psst"
     }
 )
 
@@ -37,12 +35,11 @@ preprocessing_config=dict(
     dataset_name="cnvve",
     label2id={
         "ahem": 0,
-        "samples": 1,
-        "confirm": 2,
-        "continuous": 3,
-        "decline": 4,
-        "hush": 5,
-        "psst": 6
+        "confirm": 1,
+        "continuous": 2,
+        "decline": 3,
+        "hush": 4,
+        "psst": 5
     },
     audio_model_name="facebook/wav2vec2-base",
 )

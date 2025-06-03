@@ -41,6 +41,10 @@ def _create_subsamples(data_path, new_folder):
         
         if not os.path.isdir(class_path):
             continue
+
+        # Skip the samples folder to avoid reading it as a class
+        if class_folder == "samples":
+            continue
             
         # Process audio files in the class folder
         for file in os.listdir(class_path):
