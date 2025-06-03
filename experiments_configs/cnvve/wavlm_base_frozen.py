@@ -6,27 +6,25 @@ _base_ = [
 
 model_config = dict(
     model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus-sv",
+    audio_model_name="microsoft/wavlm-base-plus",
     finetune_method="frozen",
-    num_labels=7,
+    num_labels=6,
     class_weights=None,
     label2id={
         "ahem": 0,
-        "samples": 1,
-        "confirm": 2,
-        "continuous": 3,
-        "decline": 4,
-        "hush": 5,
-        "psst": 6
+        "confirm": 1,
+        "continuous": 2,
+        "decline": 3,
+        "hush": 4,
+        "psst": 5
     },
     id2label={
         0:"ahem",
-        1:"samples",
-        2:"confirm",
-        3:"continuous",
-        4:"decline",
-        5:"hush",
-        6:"psst"
+        1:"confirm",
+        2:"continuous",
+        3:"decline",
+        4:"hush",
+        5:"psst"
     }
 )
 
@@ -37,17 +35,16 @@ preprocessing_config=dict(
     dataset_name="cnvve",
     label2id={
         "ahem": 0,
-        "samples": 1,
-        "confirm": 2,
-        "continuous": 3,
-        "decline": 4,
-        "hush": 5,
-        "psst": 6
+        "confirm": 1,
+        "continuous": 2,
+        "decline": 3,
+        "hush": 4,
+        "psst": 5
     },
-    audio_model_name="microsoft/wavlm-base-plus-sv",
+    audio_model_name="microsoft/wavlm-base-plus",
 )
 
 training_config=dict(
-    output_model_name="wavlm-cnvve-frozen",
+    output_model_name="wavlm_base_plus-cnvve-frozen",
     save_path="./outputs/cnvve",
 )

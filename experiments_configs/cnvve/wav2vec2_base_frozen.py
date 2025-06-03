@@ -8,7 +8,7 @@ model_config = dict(
     model_type="wav2vec2",
     audio_model_name="facebook/wav2vec2-base",
     finetune_method="frozen",
-    num_labels=7,
+    num_labels=6,
     class_weights=None,
     label2id={
         "ahem": 0,
