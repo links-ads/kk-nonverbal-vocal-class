@@ -1,3 +1,4 @@
+import copy
 import torch
 
 from non_verbal_voc_class.configs import ModelConfig
@@ -23,6 +24,8 @@ class WhisperClassifier(BaseClassifier):
             num_labels=config.num_labels,
         )
 
+        self._init_pos_embeddings()
+
         # Read the model config
         self.model_config = self.model.encoder.config
         if hasattr(config, 'finetune_method'):
@@ -35,6 +38,18 @@ class WhisperClassifier(BaseClassifier):
             setattr(self.model_config, 'lora_rank', config.lora_rank)
 
         self._add_adapter_and_freeze()
+
+    def _init_pos_embeddings(self):
+        if hasattr(self.config, 'max_duration') and self.config.max_duration:
+            frames_per_second = 50
+            max_duration = self.config.max_duration
+            max_source_positions = int(max_duration*frames_per_second)
+            self.model.encoder.config.max_source_positions = max_source_positions
+            self.embed_positions = copy.deepcopy(self.model.encoder.embed_positions.weight)
+            self.model.encoder.embed_positions = self.model.encoder.embed_positions.from_pretrained(
+                self.embed_positions[:max_source_positions]
+            )
+            self.model.encoder.embed_positions.requires_grad = False
 
     def _add_adapter_and_freeze(self):
         state_dict = self.model.encoder.state_dict()

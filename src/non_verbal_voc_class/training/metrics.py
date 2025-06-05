@@ -36,14 +36,14 @@ def compute_metrics(eval_pred: EvalPrediction):
     f1_score_weighted = f1_score(labels, predictions, average='weighted')
 
     report = {
-        'accuracy': accuracy,
-        'weighted_accuracy': weighted_accuracy,
-        'precision_macro': precision_macro,
-        'precision_weighted': precision_weighted,
-        'recall_macro': recall_macro,
-        'recall_weighted': recall_weighted,
-        'f1_score_macro': f1_score_macro,
-        'f1_score_weighted': f1_score_weighted,
+        'accuracy': round(accuracy*100, 2),
+        'weighted_accuracy': round(weighted_accuracy*100, 2),
+        'precision_macro': round(precision_macro*100, 2),
+        'precision_weighted': round(precision_weighted*100, 2),
+        'recall_macro': round(recall_macro*100, 2),
+        'recall_weighted': round(recall_weighted*100, 2),
+        'f1_score_macro': round(f1_score_macro*100, 2),
+        'f1_score_weighted': round(f1_score_weighted*100, 2),
     }
 
     return report

@@ -84,9 +84,9 @@ def main(config_path: str) -> None:
         lr_scheduler_kwargs=training_config.lr_scheduler_kwargs,
 
         # Saving
-        save_total_limit=4,
+        save_total_limit=1,
         load_best_model_at_end=True,
-        metric_for_best_model="eval_loss",
+        metric_for_best_model="eval_f1_score_macro",
         remove_unused_columns=False,
         fp16=True,
     )
