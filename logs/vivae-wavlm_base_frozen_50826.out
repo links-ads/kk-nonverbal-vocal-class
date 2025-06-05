@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 126, in <module>
-    main(
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 35, in main
-    config = Config.from_file(config_path)
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/configs/config.py", line 20, in from_file
-    raise FileNotFoundError(f"Configuration file not found: {config_path}")
-FileNotFoundError: Configuration file not found: experiments_configs/vivae/wavlm_base_frozen.py

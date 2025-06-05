@@ -1,3 +1,0 @@
-Using projects folder path: /nfs/projects/knock-knock/data/non-speech
-Map:   0%|          | 0/1364 [00:00<?, ? examples/s]Map:  73%|███████▎  | 1000/1364 [00:03<00:01, 324.04 examples/s]Map: 100%|██████████| 1364/1364 [00:04<00:00, 337.79 examples/s]Map: 100%|██████████| 1364/1364 [00:06<00:00, 212.48 examples/s]
-Map:   0%|          | 0/171 [00:00<?, ? examples/s]slurmstepd: error: *** JOB 50804 ON thor CANCELLED AT 2025-06-03T13:00:00 ***

@@ -1,23 +1,0 @@
-Using projects folder path: /nfs/projects/knock-knock/data/non-speech
-Map:   0%|          | 0/759 [00:00<?, ? examples/s]Map: 100%|██████████| 759/759 [00:18<00:00, 40.98 examples/s]Map: 100%|██████████| 759/759 [00:19<00:00, 38.54 examples/s]
-Map:   0%|          | 0/163 [00:00<?, ? examples/s]Map: 100%|██████████| 163/163 [00:00<00:00, 196.21 examples/s]Map: 100%|██████████| 163/163 [00:01<00:00, 148.39 examples/s]
-Map:   0%|          | 0/163 [00:00<?, ? examples/s]Map: 100%|██████████| 163/163 [00:00<00:00, 195.80 examples/s]Map: 100%|██████████| 163/163 [00:01<00:00, 144.41 examples/s]
-Traceback (most recent call last):
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 126, in <module>
-    main(
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/train.py", line 49, in main
-    model = ModelFactory.create_model(
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/models/factory.py", line 19, in create_model
-    return WavLMClassifier(config)
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/src/non_verbal_voc_class/models/wavlm_classifier.py", line 20, in __init__
-    self.model = WavLMForSequenceClassification.from_pretrained(
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4225, in from_pretrained
-    ) = cls._load_pretrained_model(
-  File "/nfs/home/marquez/kk-nonverbal-vocal-class/.venv/lib/python3.10/site-packages/transformers/modeling_utils.py", line 4785, in _load_pretrained_model
-    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
-RuntimeError: Error(s) in loading state_dict for WavLMForSequenceClassification:
-	size mismatch for projector.weight: copying a param with shape torch.Size([512, 768]) from checkpoint, the shape in current model is torch.Size([256, 768]).
-	size mismatch for projector.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
-	size mismatch for classifier.weight: copying a param with shape torch.Size([512, 512]) from checkpoint, the shape in current model is torch.Size([6, 256]).
-	size mismatch for classifier.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([6]).
-	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.

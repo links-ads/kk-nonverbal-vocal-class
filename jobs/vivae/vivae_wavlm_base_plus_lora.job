@@ -1,0 +1,14 @@
+#!/bin/bash 
+#SBATCH --job-name=vivae_wavlm_base_plus_lora
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=msteams:dasaro 
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=32G
+#SBATCH --time=48:00:00 
+#SBATCH --partition=RTX
+#SBATCH --gpus=1
+#SBATCH --output=logs/vivae/vivae_wavlm_base_plus_lora.out
+
+source .venv/bin/activate 
+python -BO train.py experiments_configs/vivae/wavlm_base_plus_lora.py

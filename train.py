@@ -31,13 +31,11 @@ def main(config_path: str) -> None:
         ------
             None
     """
-    # Load configurations
     config = Config.from_file(config_path)
     preprocessing_config = config.preprocessing_config
     training_config = config.training_config
     model_config = config.model_config
 
-    # Load dataset
     dataset = load_dataset(preprocessing_config)
 
     # TODO: Pass to loss function in trainer
@@ -45,20 +43,22 @@ def main(config_path: str) -> None:
     label_weights_list = label_weights.tolist()
     setattr(model_config, "label_weights", label_weights_list)
 
-    # Load model
     model = ModelFactory.create_model(
         config=model_config
     )
     model.train()
-
-    # Define data collator
+    
     data_collator = CollatorFactory.create_collator(training_config.collator_type)
 
-    # Define Training Arguments
+    output_dir = os.path.join(
+        training_config.output_dir,
+        training_config.experiment_dir
+    )
+
     training_args = TrainingArguments(
         # Naming
         run_name=training_config.output_model_name,
-        output_dir=training_config.save_path,
+        output_dir=output_dir,
 
         # Logging
         evaluation_strategy="epoch",
@@ -91,7 +91,6 @@ def main(config_path: str) -> None:
         fp16=True,
     )
 
-    # Initialize Trainer
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -101,13 +100,15 @@ def main(config_path: str) -> None:
         compute_metrics=compute_metrics,
     )
 
-    # Train the model
     trainer.train()
 
-    # Save the model evaluation metrics
     metrics = trainer.evaluate()
 
-    csv_file = 'outputs/metrics.csv'
+    csv_file = os.path.join(
+        training_config.output_dir, 
+        'metrics.csv'
+    )
+
     model_name = training_config.output_model_name
     file_exists = os.path.isfile(csv_file)
 

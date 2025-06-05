@@ -162,3 +162,7 @@ cython_debug/
 
 # Wandb
 wandb/
+
+# Custom
+.sh/
+logs/

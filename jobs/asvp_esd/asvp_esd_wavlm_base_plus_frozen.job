@@ -1,0 +1,14 @@
+#!/bin/bash 
+#SBATCH --job-name=asvp_esd_wavlm_base_plus_frozen
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=msteams:dasaro 
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=32G
+#SBATCH --time=48:00:00 
+#SBATCH --partition=RTX
+#SBATCH --gpus=1
+#SBATCH --output=logs/asvp_esd/asvp_esd_wavlm_base_plus_frozen.out
+
+source .venv/bin/activate 
+python -BO train.py experiments_configs/asvp_esd/wavlm_base_plus_frozen.py

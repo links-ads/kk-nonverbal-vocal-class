@@ -28,7 +28,6 @@ model_config = dict(
     }
 )
 
-
 preprocessing_config=dict(
     datasets_path="cnvve/",
     audio_dataset_path="samples/",
@@ -45,6 +44,6 @@ preprocessing_config=dict(
 )
 
 training_config=dict(
-    output_model_name="wav2vec2-cnvve-adapter",
-    save_path="./outputs/cnvve",
+    output_model_name="cnvve_wav2vec2_base_frozen",
+    experiment_dir="cnvve/wav2vec2_base_frozen",
 )

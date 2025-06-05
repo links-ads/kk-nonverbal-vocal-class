@@ -8,37 +8,42 @@ model_config = dict(
     model_type="wav2vec2",
     audio_model_name="facebook/wav2vec2-base",
     finetune_method="frozen",
-    num_labels=5,
+    num_labels=6,
     class_weights=None,
     label2id={
-        "hungry":0,
-        "discomfort":1,
-        "belly_pain":2,
-        "tired":3,
+        "ahem": 0,
+        "confirm": 1,
+        "continuous": 2,
+        "decline": 3,
+        "hush": 4,
+        "psst": 5
     },
     id2label={
-        0:"hungry",
-        1:"discomfort",
-        2:"belly_pain",
-        3:"tired",
+        0:"ahem",
+        1:"confirm",
+        2:"continuous",
+        3:"decline",
+        4:"hush",
+        5:"psst"
     }
 )
 
-
 preprocessing_config=dict(
-    datasets_path="donateacry-corpus/donateacry_corpus_cleaned_and_updated_data/",
+    datasets_path="donateacry/",
     audio_dataset_path="samples/",
     dataset_name="donateacry",
     label2id={
-        "hungry": 0,
-        "discomfort": 1,
-        "belly_pain": 2,
-        "tired": 3
+        "ahem": 0,
+        "confirm": 1,
+        "continuous": 2,
+        "decline": 3,
+        "hush": 4,
+        "psst": 5
     },
     audio_model_name="facebook/wav2vec2-base",
 )
 
 training_config=dict(
-    output_model_name="wav2vec2-donateacry-adapter",
-    save_path="./outputs/donateacry",
+    output_model_name="donateacry_wav2vec2_base_frozen",
+    experiment_dir="donateacry/wav2vec2_base_frozen",
 )
