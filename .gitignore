@@ -164,5 +164,4 @@ cython_debug/
 wandb/
 
 # Custom
-.sh/
 logs/

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_hubert_base_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_wavlm_base_plus_lora.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_wavlm_base_plus_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_wav2vec2_base_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_whisper_base_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_whisper_base_lora.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_hubert_base_lora.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_wav2vec2_base_lora.job
