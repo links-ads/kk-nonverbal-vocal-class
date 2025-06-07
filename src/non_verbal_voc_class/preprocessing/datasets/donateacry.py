@@ -207,7 +207,7 @@ def _create_readme(samples_path):
         f.write("---\n")
 
 
-def prepare_donateacry(data_path="data/donateacry-corpus/donateacry_corpus_cleaned_and_updated_data/", train_size=0.8, test_size=0.5, min_samples_per_class=10):
+def prepare_donateacry(data_path="data/donateacry_corpus/", train_size=0.8, test_size=0.5, min_samples_per_class=10):
     """
     Prepare the donateacry dataset. Creates train, val, test splits and saves them into the dataset folder.
 
@@ -266,8 +266,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data-path",
         type=str,
-        default="data/donateacry-corpus/donateacry_corpus_cleaned_and_updated_data/",
-        help="Path to the donateacry dataset (default: data/donateacry-corpus/donateacry_corpus_cleaned_and_updated_data/)"
+        default="data/donateacry_corpus/",
+        help="Path to the donateacry dataset (default: data/donateacry_corpus/)"
     )
     parser.add_argument(
         "--train-size", 

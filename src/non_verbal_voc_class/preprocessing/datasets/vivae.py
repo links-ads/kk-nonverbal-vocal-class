@@ -180,15 +180,10 @@ def preprocess_vivae(
     """
     data_path = Path(data_path)
     audio_dir = data_path / "VIVAE" / "full_set"
+    output_path = data_path / "samples"
     
     if not audio_dir.exists():
         raise FileNotFoundError(f"Audio directory not found: {audio_dir}")
-    
-    output_path = data_path / "processed"
-    output_path.mkdir(exist_ok=True)
-    
-    processed_audio_path = output_path / "audio"
-    processed_audio_path.mkdir(exist_ok=True)
     
     print(f"Processing VIVAE dataset from {audio_dir}")
     print(f"Output directory: {output_path}")
@@ -200,8 +195,8 @@ def preprocess_vivae(
         metadata = _parse_filename(audio_file.name)
         if metadata is not None:
             data_rows.append(metadata)
-            
-            dest_file = processed_audio_path / audio_file.name
+
+            dest_file = output_path / audio_file.name
             if not dest_file.exists():
                 shutil.copy2(audio_file, dest_file)
             processed_files += 1
@@ -219,11 +214,11 @@ def preprocess_vivae(
     df = _shuffle_dataset(df)
     
     train_df, val_df, test_df = _split_dataset(df, train_size, test_size)
-    
-    train_df = _append_path(train_df, processed_audio_path)
-    val_df = _append_path(val_df, processed_audio_path)
-    test_df = _append_path(test_df, processed_audio_path)
-    
+
+    train_df = _append_path(train_df, output_path)
+    val_df = _append_path(val_df, output_path)
+    test_df = _append_path(test_df, output_path)
+
     _save_dataset(train_df, output_path, "train")
     _save_dataset(val_df, output_path, "val")
     _save_dataset(test_df, output_path, "test")

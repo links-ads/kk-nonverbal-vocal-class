@@ -199,53 +199,38 @@ def prepare_recanvo(data_path="data/ReCANVo/", train_size=0.8, test_size=0.5, mi
     return:
         - samples_path: str, path to the samples directory
     """
-    # Ensure data path ends with a slash
     if not data_path.endswith('/'):
         data_path += '/'
         
     samples_path = f"{data_path}samples/"
 
-    # Create samples folder
     if not os.path.exists(samples_path):
         os.makedirs(samples_path)
 
-    # Create metadata
     samples_df = _create_subsamples(data_path, "samples")
     
-    # Filter out classes with too few samples
     if min_samples_per_class > 1:
         samples_df = _filter_small_classes(samples_df, min_samples_per_class)
         print(f"After filtering, {len(samples_df)} samples remain across {len(samples_df['label'].unique())} classes")
 
-    # Split the dataset
     train_df, val_df, test_df = _split_dataset(samples_df, train_size, test_size)
 
-    # Filter out classes with fewer than specified minimum samples
-    train_df = _filter_small_classes(train_df, min_samples=min_samples_per_class)
-    val_df = _filter_small_classes(val_df, min_samples=min_samples_per_class)
-    test_df = _filter_small_classes(test_df, min_samples=min_samples_per_class)
-
-    # Drop unnecessary columns
     train_df = _drop_columns(train_df)
     val_df = _drop_columns(val_df)
     test_df = _drop_columns(test_df)
 
-    # Shuffle the datasets
     train_df = _shuffle_dataset(train_df)
     val_df = _shuffle_dataset(val_df)
     test_df = _shuffle_dataset(test_df)
 
-    # Append full path to file_name column
     train_df = _append_path(train_df, 'file_name', samples_path)
     val_df = _append_path(val_df, 'file_name', samples_path)
     test_df = _append_path(test_df, 'file_name', samples_path)
 
-    # Save the split datasets into the folder
     _save_dataset(train_df, f"{samples_path}train.csv")
     _save_dataset(val_df, f"{samples_path}val.csv")
     _save_dataset(test_df, f"{samples_path}test.csv")
 
-    # Create README file
     _create_readme(samples_path)
 
     return samples_path

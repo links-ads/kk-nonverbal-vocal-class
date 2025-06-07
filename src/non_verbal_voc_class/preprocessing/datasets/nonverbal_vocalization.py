@@ -114,6 +114,13 @@ def _split_dataset(samples_df, train_size, test_size):
         random_state=42
     )
 
+    val_df, test_df = train_test_split(
+        test_df, 
+        test_size=test_size, 
+        stratify=test_df['label'], 
+        random_state=42
+    )
+
     print("Number of samples per class:")
     class_counts = samples_df['label'].value_counts()
     for label, count in class_counts.items():
@@ -124,17 +131,15 @@ def _split_dataset(samples_df, train_size, test_size):
     for label, count in train_counts.items():
         print(f"  {label}: {count} ({count/len(train_df):.2%})")
 
+    val_counts = val_df['label'].value_counts()
+    print("\nVal set distribution:")
+    for label, count in val_counts.items():
+        print(f"  {label}: {count} ({count/len(val_df):.2%})")
+
     test_counts = test_df['label'].value_counts()
     print("\nTest set distribution:")
     for label, count in test_counts.items():
         print(f"  {label}: {count} ({count/len(test_df):.2%})")
-
-    val_df, test_df = train_test_split(
-        test_df, 
-        test_size=test_size, 
-        stratify=test_df['label'], 
-        random_state=42
-    )
 
     return train_df, val_df, test_df
 
@@ -196,7 +201,7 @@ def _create_readme(samples_path):
     with open(f"{samples_path}README.md", "w") as f:
         f.write("---\n")
         f.write("configs:\n")
-        f.write("- config_name: default-nonverbal-vocalization\n")
+        f.write("- config_name: default-nonverbal_vocalization_dataset\n")
         f.write("  data_files:\n")
         f.write("  - split: train\n")
         f.write('    path: "train.csv"\n')
@@ -207,7 +212,7 @@ def _create_readme(samples_path):
         f.write("---\n")
 
 
-def prepare_nonverbal_vocalization(data_path="data/nonverbal_vocalization_dataset/NonverbalVocalization/", train_size=0.8, test_size=0.5, min_samples_per_class=10):
+def prepare_nonverbal_vocalization(data_path="data/nonverbal_vocalization_dataset", train_size=0.8, test_size=0.5, min_samples_per_class=10):
     """
     Prepare the nonverbal vocalization dataset. Creates train, val, test splits and saves them into the dataset folder.
 
@@ -270,8 +275,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--data-path",
         type=str,
-        default="data/nonverbal_vocalization_dataset/NonverbalVocalization/",
-        help="Path to the nonverbal vocalization dataset (default: data/nonverbal_vocalization_dataset/NonverbalVocalization/)"
+        default="data/nonverbal_vocalization_dataset",
+        help="Path to the nonverbal vocalization dataset (default: data/nonverbal_vocalization_dataset)"
     )
     parser.add_argument(
         "--train-size", 

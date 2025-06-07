@@ -11,20 +11,20 @@ model_config = dict(
     num_labels=6,
     class_weights=None,
     label2id={
-        "ahem": 0,
-        "confirm": 1,
-        "continuous": 2,
-        "decline": 3,
-        "hush": 4,
-        "psst": 5
+        "achievement": 0,
+        "anger": 1,
+        "fear": 2,
+        "pain": 3,
+        "pleasure": 4,
+        "surprise": 5
     },
     id2label={
-        0:"ahem",
-        1:"confirm",
-        2:"continuous",
-        3:"decline",
-        4:"hush",
-        5:"psst"
+        0: "achievement",
+        1: "anger",
+        2: "fear",
+        3: "pain",
+        4: "pleasure",
+        5: "surprise"
     }
 )
 
@@ -33,17 +33,17 @@ preprocessing_config=dict(
     audio_dataset_path="samples/",
     dataset_name="vivae",
     label2id={
-        "ahem": 0,
-        "confirm": 1,
-        "continuous": 2,
-        "decline": 3,
-        "hush": 4,
-        "psst": 5
+        "achievement": 0,
+        "anger": 1,
+        "fear": 2,
+        "pain": 3,
+        "pleasure": 4,
+        "surprise": 5
     },
     audio_model_name="microsoft/wavlm-base-plus",
 )
 
 training_config=dict(
-    output_model_name="wavlm_base_plus-vivae-frozen",
-    experiment_dir="vivae",
+    output_model_name="vivae_wavlm_base_plus_frozen",
+    experiment_dir="vivae/wavlm_base_plus_frozen",
 )

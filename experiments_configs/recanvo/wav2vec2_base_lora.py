@@ -4,42 +4,25 @@ _base_ = [
     '../_base_/base_training.py',
 ]
 
+LABELS = [
+    'selftalk', 'frustrated', 'delighted', 'dysregulated', 'social', 'request'
+]
+
 model_config = dict(
     model_type="wav2vec2",
     audio_model_name="facebook/wav2vec2-base",
     finetune_method="lora",
-    num_labels=6,
+    num_labels=len(LABELS),
     class_weights=None,
-    label2id={
-        "ahem": 0,
-        "confirm": 1,
-        "continuous": 2,
-        "decline": 3,
-        "hush": 4,
-        "psst": 5
-    },
-    id2label={
-        0:"ahem",
-        1:"confirm",
-        2:"continuous",
-        3:"decline",
-        4:"hush",
-        5:"psst"
-    }
+    label2id={label: idx for idx, label in enumerate(LABELS)},
+    id2label={idx: label for idx, label in enumerate(LABELS)}
 )
 
 preprocessing_config=dict(
     datasets_path="recanvo/",
     audio_dataset_path="samples/",
     dataset_name="recanvo",
-    label2id={
-        "ahem": 0,
-        "confirm": 1,
-        "continuous": 2,
-        "decline": 3,
-        "hush": 4,
-        "psst": 5
-    },
+    label2id={label: idx for idx, label in enumerate(LABELS)},
     audio_model_name="facebook/wav2vec2-base",
 )
 

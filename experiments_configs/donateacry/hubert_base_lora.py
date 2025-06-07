@@ -8,37 +8,34 @@ model_config = dict(
     model_type="hubert",
     audio_model_name="facebook/hubert-base-ls960",
     finetune_method="lora",
-    num_labels=6,
+    num_labels=5,
     class_weights=None,
     label2id={
-        "ahem": 0,
-        "confirm": 1,
-        "continuous": 2,
-        "decline": 3,
-        "hush": 4,
-        "psst": 5
+        "belly_pain": 0,
+        "burping": 1,
+        "discomfort": 2,
+        "hungry": 3,
+        "tired": 4,
     },
     id2label={
-        0:"ahem",
-        1:"confirm",
-        2:"continuous",
-        3:"decline",
-        4:"hush",
-        5:"psst"
+        0:"belly_pain",
+        1:"burping",
+        2:"discomfort",
+        3:"hungry",
+        4:"tired",
     }
 )
 
 preprocessing_config=dict(
-    datasets_path="donateacry/",
+    datasets_path="donateacry_corpus/",
     audio_dataset_path="samples/",
     dataset_name="donateacry",
     label2id={
-        "ahem": 0,
-        "confirm": 1,
-        "continuous": 2,
-        "decline": 3,
-        "hush": 4,
-        "psst": 5
+        "belly_pain": 0,
+        "burping": 1,
+        "discomfort": 2,
+        "hungry": 3,
+        "tired": 4,
     },
     audio_model_name="facebook/hubert-base-ls960",
 )

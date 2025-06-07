@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 
 def _parse_filename(filename):
     """
-    Parse ASVP-ESD filename to extract metadata.
+    Parse ASVP_ESD filename to extract metadata.
     Format: MM-VC-EM-IN-ST-AC-AG-SO-LA.wav
     """
     if not filename.endswith('.wav'):
@@ -18,24 +18,25 @@ def _parse_filename(filename):
         return None
     
     emotion_map = {
-        '01': 'boredom',
-        '02': 'neutral',
-        '03': 'happy',
-        '04': 'sad',
-        '05': 'angry',
-        '06': 'fearful',
-        '07': 'disgust',
-        '08': 'surprised',
-        '09': 'excited',
-        '10': 'pleasure',
-        '11': 'pain',
-        '12': 'disappointment',
-        '13': 'breath'
+        "01": "boredom_sigh",
+        "02": "neutral_calm", 
+        "03": "happy_laugh_gaggle",
+        "04": "sad_cry",
+        "05": "angry_grunt_frustration",
+        "06": "fearful_scream_panic",
+        "07": "disgust_dislike_contempt",
+        "08": "surprised_gasp_amazed",
+        "09": "excited",
+        "10": "pleasure",
+        "11": "pain_groan",
+        "12": "disappointment_disapproval",
+        "13": "breath",
+        "17": "disgust_dislike_contempt"
     }
     
     vocal_channel = 'speech' if parts[1] == '01' else 'non_speech'
     emotion_code = parts[2]
-    emotion = emotion_map.get(emotion_code, 'unknown')
+    emotion = emotion_map[emotion_code]
     actor_id = parts[5]
     gender = 'male' if int(actor_id) % 2 == 0 else 'female'
     
@@ -198,10 +199,11 @@ def _save_dataset(df, file_path):
 
 
 def _create_readme(samples_path):
+    default_name = f"default-asvp_esd{'_babies' if 'babies' in samples_path else ''}"
     with open(f"{samples_path}README.md", "w") as f:
         f.write("---\n")
         f.write("configs:\n")
-        f.write("- config_name: default-asvp-esd\n")
+        f.write(f"- config_name: {default_name}\n")
         f.write("  data_files:\n")
         f.write("  - split: train\n")
         f.write('    path: "train.csv"\n')
@@ -212,12 +214,12 @@ def _create_readme(samples_path):
         f.write("---\n")
 
 
-def prepare_asvp_esd(data_path="data/asvp-esd/Audio/", train_size=0.8, test_size=0.5, min_samples_per_class=10):
+def prepare_asvp_esd(data_path="data/asvp_esd/Audio/", train_size=0.8, test_size=0.5, min_samples_per_class=10):
     """
-    Prepare the ASVP-ESD dataset. Creates train, val, test splits and saves them into the dataset folder.
+    Prepare the ASVP_ESD dataset. Creates train, val, test splits and saves them into the dataset folder.
 
     args:
-        - data_path: str, path to the ASVP-ESD Audio folder
+        - data_path: str, path to the ASVP_ESD Audio folder
         - train_size: float, size of the train set
         - test_size: float, size of the test set
         - min_samples_per_class: int, minimum samples required per class
@@ -268,12 +270,12 @@ def prepare_asvp_esd(data_path="data/asvp-esd/Audio/", train_size=0.8, test_size
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Prepare ASVP-ESD dataset")
+    parser = argparse.ArgumentParser(description="Prepare ASVP_ESD dataset")
     parser.add_argument(
         "--data-path",
         type=str,
-        default="data/asvp-esd/Audio/",
-        help="Path to the ASVP-ESD Audio folder (default: data/asvp-esd/Audio/)"
+        default="data/asvp_esd/Audio/",
+        help="Path to the ASVP_ESD Audio folder (default: data/asvp_esd/Audio/)"
     )
     parser.add_argument(
         "--train-size", 
@@ -295,7 +297,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    print(f"Preparing ASVP-ESD dataset at {args.data_path}")
+    print(f"Preparing ASVP_ESD dataset at {args.data_path}")
     print(f"Parameters: train_size={args.train_size}, test_size={args.test_size}, min_samples={args.min_samples}")
     
     samples_path = prepare_asvp_esd(

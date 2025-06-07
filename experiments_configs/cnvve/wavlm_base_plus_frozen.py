@@ -45,5 +45,5 @@ preprocessing_config=dict(
 
 training_config=dict(
     output_model_name="wavlm_base_plus-cnvve-frozen",
-    experiment_dir="cnvve",
+    experiment_dir="cnvve/wavlm_base_plus_frozen",
 )
