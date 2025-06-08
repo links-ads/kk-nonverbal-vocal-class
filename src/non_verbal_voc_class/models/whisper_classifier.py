@@ -37,6 +37,12 @@ class WhisperClassifier(BaseClassifier):
         if hasattr(config, 'lora_rank'):
             setattr(self.model_config, 'lora_rank', config.lora_rank)
 
+        if hasattr(config, 'apply_adapter_to_layers'):
+            assert isinstance(config.apply_adapter_to_layers, list), "apply_adapter_to_layers must be a list"
+            self.apply_adapter_to_layers = config.apply_adapter_to_layers
+        else:
+            self.apply_adapter_to_layers = range(self.model_config.encoder_layers)
+
         self._add_adapter_and_freeze()
 
     def _init_pos_embeddings(self):
@@ -55,9 +61,16 @@ class WhisperClassifier(BaseClassifier):
         state_dict = self.model.encoder.state_dict()
 
         # Config encoder layers with adapter, embedding prompt or lora
-        self.model.encoder.layers = nn.ModuleList(
-            [WhisperEncoderLayer(self.model_config) for _ in range(self.model_config.encoder_layers)]
-        )
+        new_layers = nn.ModuleList()
+        for i in range(self.model_config.encoder_layers):
+            layer_config = copy.deepcopy(self.model_config)
+            if i in self.apply_adapter_to_layers:
+                layer_config.finetune_method = self.finetune_method
+            else:
+                layer_config.finetune_method = "frozen"
+            new_layer = WhisperEncoderLayer(layer_config)
+            new_layers.append(new_layer)
+        self.model.encoder.layers = new_layers
 
         # Load the weights back
         msg = self.model.encoder.load_state_dict(state_dict, strict=False)
