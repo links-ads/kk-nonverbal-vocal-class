@@ -1,0 +1,14 @@
+#!/bin/bash 
+#SBATCH --job-name=donateacry_whisper_base_lora_345
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=msteams:dasaro 
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=32G
+#SBATCH --time=48:00:00 
+#SBATCH --partition=A100
+#SBATCH --gpus=1g.20gb:1
+#SBATCH --output=logs/donateacry/donateacry_whisper_base_lora_345.out
+
+source .venv/bin/activate 
+python -BO train.py experiments_configs/donateacry/whisper_base_lora_345.py
