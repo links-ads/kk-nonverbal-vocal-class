@@ -5,8 +5,8 @@ _base_ = [
 ]
 
 model_config = dict(
-    model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus",
+    model_type="hubert",
+    audio_model_name="facebook/hubert-large-ls960-ft",
     finetune_method="frozen",
     num_labels=14,
     class_weights=None,
@@ -64,10 +64,10 @@ preprocessing_config=dict(
         "breath": 12,
         "disgust_dislike_contempt": 13
     },
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="facebook/hubert-large-ls960-ft",
 )
 
 training_config=dict(
-    output_model_name="asvp_esd_wavlm_base_plus_frozen",
-    experiment_dir="asvp_esd/wavlm_base_plus_frozen",
+    output_model_name="asvp_esd_hubert_large_frozen",
+    experiment_dir="asvp_esd/hubert_large_frozen",
 )

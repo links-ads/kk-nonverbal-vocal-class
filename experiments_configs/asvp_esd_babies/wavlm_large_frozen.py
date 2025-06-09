@@ -6,9 +6,9 @@ _base_ = [
 
 model_config = dict(
     model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="microsoft/wavlm-large",
     finetune_method="frozen",
-    num_labels=14,
+    num_labels=6,
     class_weights=None,
     label2id={
         "boredom_sigh": 0,
@@ -45,9 +45,9 @@ model_config = dict(
 )
 
 preprocessing_config=dict(
-    datasets_path="asvp_esd/",
+    datasets_path="asvp_esd_babies/",
     audio_dataset_path="samples/",
-    dataset_name="asvp_esd",
+    dataset_name="asvp_esd_babies",
     label2id={
         "boredom_sigh": 0,
         "neutral_calm": 1,
@@ -64,10 +64,10 @@ preprocessing_config=dict(
         "breath": 12,
         "disgust_dislike_contempt": 13
     },
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="microsoft/wavlm-large",
 )
 
 training_config=dict(
-    output_model_name="asvp_esd_wavlm_base_plus_frozen",
-    experiment_dir="asvp_esd/wavlm_base_plus_frozen",
+    output_model_name="asvp_esd_babies_wavlm_large_frozen",
+    experiment_dir="asvp_esd_babies/wavlm_large_frozen",
 )

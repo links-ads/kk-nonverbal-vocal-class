@@ -5,8 +5,8 @@ _base_ = [
 ]
 
 model_config = dict(
-    model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus",
+    model_type="wav2vec2",
+    audio_model_name="facebook/wav2vec2-large",
     finetune_method="frozen",
     num_labels=6,
     class_weights=None,
@@ -29,9 +29,9 @@ model_config = dict(
 )
 
 preprocessing_config=dict(
-    datasets_path="cnvve/",
+    datasets_path="vivae/",
     audio_dataset_path="samples/",
-    dataset_name="cnvve",
+    dataset_name="vivae",
     label2id={
         "ahem": 0,
         "confirm": 1,
@@ -40,10 +40,10 @@ preprocessing_config=dict(
         "hush": 4,
         "psst": 5
     },
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="facebook/wav2vec2-large",
 )
 
 training_config=dict(
-    output_model_name="cnvve_wavlm_base_plus_frozen",
-    experiment_dir="cnvve/wavlm_base_plus_frozen",
+    output_model_name="vivae_wav2vec2_large_frozen",
+    experiment_dir="vivae/wav2vec2_large_frozen",
 )

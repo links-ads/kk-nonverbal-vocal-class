@@ -68,6 +68,6 @@ preprocessing_config=dict(
 )
 
 training_config=dict(
-    output_model_name="wavlm_base_plus-asvp_esd_babies-frozen",
+    output_model_name="asvp_esd_babies_wavlm_base_plus_frozen",
     experiment_dir="asvp_esd_babies/wavlm_base_plus_frozen",
 )

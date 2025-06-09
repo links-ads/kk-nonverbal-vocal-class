@@ -9,8 +9,8 @@ LABELS = [
 ]
 
 model_config = dict(
-    model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus",
+    model_type="hubert",
+    audio_model_name="facebook/hubert-large-ls960-ft",
     finetune_method="frozen",
     num_labels=len(LABELS),
     class_weights=None,
@@ -23,11 +23,10 @@ preprocessing_config=dict(
     audio_dataset_path="samples/",
     dataset_name="recanvo",
     label2id={label: idx for idx, label in enumerate(LABELS)},
-    id2label={idx: label for idx, label in enumerate(LABELS)},
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="facebook/hubert-large-ls960-ft",
 )
 
 training_config=dict(
-    output_model_name="recanvo_wavlm_base_plus_frozen",
-    experiment_dir="recanvo/wavlm_base_plus_frozen",
+    output_model_name="recanvo_hubert_large_frozen",
+    experiment_dir="recanvo/hubert_large_frozen",
 )

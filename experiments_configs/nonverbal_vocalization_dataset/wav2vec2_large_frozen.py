@@ -5,8 +5,8 @@ _base_ = [
 ]
 
 model_config = dict(
-    model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus",
+    model_type="wav2vec2",
+    audio_model_name="facebook/wav2vec2-large",
     finetune_method="frozen",
     num_labels=16,
     class_weights=None,
@@ -70,10 +70,10 @@ preprocessing_config=dict(
         "laughing": 14,
         "crying": 15
     },
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="facebook/wav2vec2-large",
 )
 
 training_config=dict(
-    output_model_name="nonverbal_vocalization_dataset_wavlm_base_plus_frozen",
-    experiment_dir="nonverbal_vocalization_dataset/wavlm_base_plus_frozen",
+    output_model_name="nonverbal_vocalization_dataset_wav2vec2_large_frozen",
+    experiment_dir="nonverbal_vocalization_dataset/wav2vec2_large_frozen",
 )

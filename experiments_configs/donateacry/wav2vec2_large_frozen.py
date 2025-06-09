@@ -5,8 +5,8 @@ _base_ = [
 ]
 
 model_config = dict(
-    model_type="wavlm",
-    audio_model_name="microsoft/wavlm-base-plus",
+    model_type="wav2vec2",
+    audio_model_name="facebook/wav2vec2-large",
     finetune_method="frozen",
     num_labels=5,
     class_weights=None,
@@ -37,10 +37,10 @@ preprocessing_config=dict(
         "hungry": 3,
         "tired": 4,
     },
-    audio_model_name="microsoft/wavlm-base-plus",
+    audio_model_name="facebook/wav2vec2-large",
 )
 
 training_config=dict(
-    output_model_name="donateacry_wavlm_base_plus_frozen",
-    experiment_dir="donateacry/wavlm_base_plus_frozen",
+    output_model_name="donateacry_wav2vec2_large_frozen",
+    experiment_dir="donateacry/wav2vec2_large_frozen",
 )
