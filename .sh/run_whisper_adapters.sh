@@ -1,0 +1,32 @@
+#!/bin/bash
+
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_tiny_lora.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_tiny_embedding_prompt.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_small_adapter.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_tiny_adapter.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_small_embedding_prompt.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_small_lora.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_small_embedding_prompt.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_small_lora.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_tiny_adapter.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_tiny_embedding_prompt.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_tiny_lora.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_small_adapter.job
+sbatch jobs/vivae/vivae_whisper_small_adapter.job
+sbatch jobs/vivae/vivae_whisper_tiny_lora.job
+sbatch jobs/vivae/vivae_whisper_small_lora.job
+sbatch jobs/vivae/vivae_whisper_tiny_embedding_prompt.job
+sbatch jobs/vivae/vivae_whisper_tiny_adapter.job
+sbatch jobs/vivae/vivae_whisper_small_embedding_prompt.job
+sbatch jobs/cnvve/cnvve_whisper_small_lora.job
+sbatch jobs/cnvve/cnvve_whisper_tiny_embedding_prompt.job
+sbatch jobs/cnvve/cnvve_whisper_tiny_adapter.job
+sbatch jobs/cnvve/cnvve_whisper_small_embedding_prompt.job
+sbatch jobs/cnvve/cnvve_whisper_small_adapter.job
+sbatch jobs/cnvve/cnvve_whisper_tiny_lora.job
+sbatch jobs/recanvo/recanvo_whisper_tiny_lora.job
+sbatch jobs/recanvo/recanvo_whisper_tiny_adapter.job
+sbatch jobs/recanvo/recanvo_whisper_small_embedding_prompt.job
+sbatch jobs/recanvo/recanvo_whisper_small_adapter.job
+sbatch jobs/recanvo/recanvo_whisper_small_lora.job
+sbatch jobs/recanvo/recanvo_whisper_tiny_embedding_prompt.job

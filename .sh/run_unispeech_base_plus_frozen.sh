@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_unispeech_base_plus_frozen.job
+sbatch jobs/asvp_esd/asvp_esd_unispeech_base_plus_frozen.job
+sbatch jobs/vivae/vivae_unispeech_base_plus_frozen.job
+sbatch jobs/donateacry/donateacry_unispeech_base_plus_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_unispeech_base_plus_frozen.job
+sbatch jobs/cnvve/cnvve_unispeech_base_plus_frozen.job
+sbatch jobs/recanvo/recanvo_unispeech_base_plus_frozen.job

@@ -1,8 +1,8 @@
 training_config = dict(
     logging_steps=100,
     train_batch_size=16,
-    eval_batch_size=16,
-    eval_accumulation_steps=None,
+    eval_batch_size=4,
+    eval_accumulation_steps=4,
     gradient_accumulation_steps=2,
     epochs=50,
     learning_rate=1e-4,

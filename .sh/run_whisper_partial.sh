@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_tiny_lora_012.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_small_lora_7-12.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_tiny_lora_34.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_small_lora_0-6.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_small_lora_0-6.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_tiny_lora_012.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_tiny_lora_34.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_small_lora_7-12.job
+sbatch jobs/vivae/vivae_whisper_small_lora_0-6.job
+sbatch jobs/vivae/vivae_whisper_tiny_lora_34.job
+sbatch jobs/vivae/vivae_whisper_small_lora_7-12.job
+sbatch jobs/vivae/vivae_whisper_tiny_lora_012.job
+sbatch jobs/cnvve/cnvve_whisper_tiny_lora_34.job
+sbatch jobs/cnvve/cnvve_whisper_small_lora_0-6.job
+sbatch jobs/cnvve/cnvve_whisper_small_lora_7-12.job
+sbatch jobs/cnvve/cnvve_whisper_tiny_lora_012.job
+sbatch jobs/recanvo/recanvo_whisper_tiny_lora_012.job
+sbatch jobs/recanvo/recanvo_whisper_small_lora_0-6.job
+sbatch jobs/recanvo/recanvo_whisper_tiny_lora_34.job
+sbatch jobs/recanvo/recanvo_whisper_small_lora_7-12.job

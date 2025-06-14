@@ -1,0 +1,14 @@
+#!/bin/bash 
+#SBATCH --job-name=recanvo_whisper_large_frozen
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=msteams:dasaro 
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=128G
+#SBATCH --time=48:00:00 
+#SBATCH --partition=A100
+#SBATCH --gpus=1g.20gb:1
+#SBATCH --output=logs/recanvo/recanvo_whisper_large_frozen.out
+
+source .venv/bin/activate 
+python -BO train.py experiments_configs/recanvo/whisper_large_frozen.py

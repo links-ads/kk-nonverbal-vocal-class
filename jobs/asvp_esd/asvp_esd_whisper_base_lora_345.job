@@ -4,7 +4,7 @@
 #SBATCH --mail-user=msteams:dasaro 
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
+#SBATCH --mem=128G
 #SBATCH --time=48:00:00 
 #SBATCH --partition=A100
 #SBATCH --gpus=1g.20gb:1

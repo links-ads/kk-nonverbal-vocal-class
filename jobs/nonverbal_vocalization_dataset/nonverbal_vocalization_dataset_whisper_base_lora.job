@@ -1,15 +1,14 @@
 #!/bin/bash 
 #SBATCH --job-name=nonverbal_vocalization_dataset_whisper_base_lora
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=msteams:marquez 
+#SBATCH --mail-user=msteams:dasaro 
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
+#SBATCH --mem=128G
 #SBATCH --time=48:00:00 
 #SBATCH --partition=A100
 #SBATCH --gpus=1g.20gb:1
 #SBATCH --output=logs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_base_lora.out
-#SBATCH --qos=high
 
 source .venv/bin/activate 
 python -BO train.py experiments_configs/nonverbal_vocalization_dataset/whisper_base_lora.py

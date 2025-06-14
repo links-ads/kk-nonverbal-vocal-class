@@ -65,7 +65,7 @@ def main(config_path: str) -> None:
         save_strategy="epoch",
         logging_strategy="steps",
         logging_steps=training_config.logging_steps,
-        report_to="wandb",
+        # report_to="wandb",
 
         # Batches
         per_device_train_batch_size=training_config.train_batch_size,

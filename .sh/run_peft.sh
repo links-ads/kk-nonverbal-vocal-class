@@ -1,0 +1,16 @@
+#!/bin/bash
+
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_base_embedding_prompt.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_base_adapter.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_base_adapter.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_base_embedding_prompt.job
+sbatch jobs/vivae/vivae_whisper_base_embedding_prompt.job
+sbatch jobs/vivae/vivae_whisper_base_adapter.job
+sbatch jobs/donateacry/donateacry_whisper_base_adapter.job
+sbatch jobs/donateacry/donateacry_whisper_base_embedding_prompt.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_whisper_base_embedding_prompt.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_whisper_base_adapter.job
+sbatch jobs/cnvve/cnvve_whisper_base_adapter.job
+sbatch jobs/cnvve/cnvve_whisper_base_embedding_prompt.job
+sbatch jobs/recanvo/recanvo_whisper_base_adapter.job
+sbatch jobs/recanvo/recanvo_whisper_base_embedding_prompt.job

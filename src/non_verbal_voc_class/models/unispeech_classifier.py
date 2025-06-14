@@ -84,6 +84,6 @@ class UniSpeechClassifier(BaseClassifier):
         return SequenceClassifierOutput(
             loss=loss,
             logits=logits,
-            hidden_states=output.hidden_states,
-            attentions=output.attentions,
+            hidden_states=None,
+            attentions=None,
         )

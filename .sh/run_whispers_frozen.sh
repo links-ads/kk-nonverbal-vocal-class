@@ -1,0 +1,14 @@
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_large_frozen.job
+sbatch jobs/nonverbal_vocalization_dataset/nonverbal_vocalization_dataset_whisper_medium_frozen.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_medium_frozen.job
+sbatch jobs/asvp_esd/asvp_esd_whisper_large_frozen.job
+sbatch jobs/vivae/vivae_whisper_medium_frozen.job
+sbatch jobs/vivae/vivae_whisper_large_frozen.job
+sbatch jobs/donateacry/donateacry_whisper_large_frozen.job
+sbatch jobs/donateacry/donateacry_whisper_medium_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_whisper_medium_frozen.job
+sbatch jobs/asvp_esd_babies/asvp_esd_babies_whisper_large_frozen.job
+sbatch jobs/cnvve/cnvve_whisper_medium_frozen.job
+sbatch jobs/cnvve/cnvve_whisper_large_frozen.job
+sbatch jobs/recanvo/recanvo_whisper_large_frozen.job
+sbatch jobs/recanvo/recanvo_whisper_medium_frozen.job
