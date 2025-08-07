@@ -22,7 +22,7 @@ We conduct experiments across **five NVV datasets**:
 
 ## Model Architecture
 
-![Non-Verbal Vocalization Classifier Pipeline](assets/model_architecture.png)
+![Non-Verbal Vocalization Classifier Pipeline](resources/model_architecture.png)
 
 Our framework implements a unified pipeline for adapting Large Speech Models to non-verbal vocalization tasks:
 
