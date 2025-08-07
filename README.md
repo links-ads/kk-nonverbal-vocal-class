@@ -1,67 +1,255 @@
-# Python ML template
-A simple template to bootstrap Python machine learning projects, maintaining a standard structure.
-It should be slightly faster than starting from scratch each time.
+# Exploring the Adaptability of Large Speech Models to Non-Verbal Vocalization Tasks
+
+This repository accompanies the paper **"Exploring the Adaptability of Large Speech Models to Non-Verbal Vocalization Tasks"**, which investigates how Large Speech Models (LSMs) can be adapted to recognize and process **Non-Verbal Vocalizations (NVVs)**—vocal bursts like laughter, sighs, screams, and moans.
+
+## Overview
+
+Large Speech Models such as **Wav2Vec 2.0**, **HuBERT**, **WavLM**, **UniSpeech**, and **Whisper** have proven highly effective on speech-centric tasks. However, their ability to generalize to non-verbal vocal cues remains largely unexplored.
+
+In this work, we systematically study:
+- The *pre-trained* knowledge of LSMs about NVVs using **linear probing**.
+- The performance improvements from **Parameter-Efficient Fine-Tuning (PEFT)** techniques such as:
+  - **LoRA** (Low-Rank Adaptation)
+  - **Adapters**
+  - **Prompt Tuning**
+
+We conduct experiments across **five NVV datasets**:
+- **ASVP-ESD** - Audio-Visual Speaker-Independent Emotion and Sentiment Dataset
+- **CNVVE** - Chinese Non-Verbal Vocalization Emotion Dataset
+- **Non-Verbal Vocalization Dataset** - General NVV classification dataset
+- **ReCANVo** - Relational and Contextual Audio Non-Verbal Vocalizations
+- **VIVAE** - Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset
+
+## Key Results
+
+- **Whisper** consistently outperforms other LSMs across all datasets.
+- **LoRA** emerges as the most effective PEFT method.
+- Non-verbal information is primarily encoded in **later layers** of Whisper.
+- Surprisingly, **fine-tuning earlier, less informative layers** results in better adaptation than fine-tuning layers already rich in NVV knowledge.
+
+## Contributions
+
+1. **Benchmarking**: First systematic evaluation of LSMs on NVV tasks using five public datasets.
+2. **Adaptation Techniques**: Comparison of PEFT methods (LoRA, Adapters, Prompt Tuning) for NVV modeling.
+3. **Layer-wise Analysis**: Insights into which layers encode NVV-relevant features and how to adapt them effectively.
+
+## Repository Structure
+
+```
+├── data/                           # Raw datasets for NVV classification
+│   ├── asvp_esd/                  # ASVP-ESD dataset
+│   ├── cnvve/                     # CNVVE dataset  
+│   ├── nonverbal_vocalization_dataset/  # General NVV dataset
+│   ├── recanvo/                   # ReCANVo dataset
+│   └── vivae/                     # VIVAE dataset
+├── src/non_verbal_voc_class/      # Main package source code
+│   ├── configs/                   # Configuration management
+│   ├── models/                    # LSM implementations and PEFT wrappers
+│   │   ├── encoders/             # Audio encoder implementations
+│   │   ├── whisper_classifier.py # Whisper-based classifier
+│   │   ├── wav2vec2_classifier.py # Wav2Vec2-based classifier
+│   │   ├── hubert_classifier.py  # HuBERT-based classifier
+│   │   ├── wavlm_classifier.py   # WavLM-based classifier
+│   │   └── unispeech_classifier.py # UniSpeech-based classifier
+│   ├── preprocessing/             # Data preprocessing and loading
+│   │   └── datasets/             # Dataset-specific preprocessing
+│   └── training/                  # Training infrastructure
+│       ├── collators/            # Data collation for batching
+│       ├── evaluation.py         # Evaluation metrics and procedures
+│       └── trainer.py            # Custom trainer implementations
+├── experiments_configs/           # Experiment configuration files
+│   ├── _base_/                   # Base configuration templates
+│   ├── asvp_esd/                 # ASVP-ESD experiment configs
+│   ├── cnvve/                    # CNVVE experiment configs
+│   ├── nonverbal_vocalization_dataset/  # NVV dataset configs
+│   ├── recanvo/                  # ReCANVo experiment configs
+│   └── vivae/                    # VIVAE experiment configs
+├── jobs/                          # Job scripts for cluster execution
+├── examples/                      # Usage examples and tutorials
+├── notebooks/                     # Jupyter notebooks for analysis
+├── outputs/                       # Training outputs and results
+├── logs/                         # Training logs and metrics
+├── train.py                      # Main training script
+└── requirements.txt              # Python dependencies
+```
 
 ## Getting Started
 
-To use this template, follow these steps:
+### Requirements
 
-1. Click the "Use this template" button at the top of the repository and follow the procedure.
+- Python 3.10+
+- PyTorch >= 2.0
+- Transformers (HuggingFace) >= 4.40
+- Additional dependencies listed in `requirements.txt`
 
-2. Clone your new repository to your local machine:
+### Installation
 
-   ```bash
-   git clone https://github.com/your-username/your-repo.git
-   ```
+1. Clone the repository:
+```bash
+git clone https://github.com/links-ads/kk-nonverbal-vocal-class.git
+cd kk-nonverbal-vocal-class
+```
 
-3. Navigate to the project directory. Optional but recommended: create and activate a Python virtual environment to isolate your project's dependencies.
-E.g.:
+2. Install the package and dependencies:
+```bash
+pip install -r requirements.txt
+pip install -e .
+```
 
-   ```bash
-   cd your-repo
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows, use .venv\Scripts\activate
-   ```
-5. The template provides a simple "self-destructing" initialization script, `init.py`, that automatically provides the necessary information to generate a fully functional python package (project name, author, ...).
-From a python environment, or any other means, this script can be launched as easily as:
+### Quick Start
 
-    ```bash
-    # launch and follow the prompts
-    python init.py
-    ```
+1. **Basic Training Example** - Train a Whisper model with LoRA on ReCANVo dataset:
+```bash
+python train.py experiments_configs/recanvo/whisper_base_lora_012.py
+```
 
-6. Install the required dependencies:
+2. **Custom Configuration** - Create your own experiment configuration by extending the base configs:
+```python
+# experiments_configs/custom/my_experiment.py
+_base_ = [
+    '../_base_/base_model.py',
+    '../_base_/base_preprocessing.py', 
+    '../_base_/base_training.py',
+]
 
-   ```bash
-    # Install the bare minimum, editable is usually preferred when developing
-   pip install -e .
-   # Install extras
-   pip install -e .[dev,docs,test]
-   ```
+model_config = dict(
+    model_type="whisper",
+    audio_model_name="openai/whisper-base",
+    finetune_method="lora",
+    apply_adapter_to_layers=[0,1,2],
+    num_labels=6,
+)
 
+preprocessing_config = dict(
+    datasets_path="your_dataset/",
+    audio_dataset_path="samples/",
+    dataset_name="your_dataset",
+)
+```
 
-7. You're good to go! Of course, you can further customize it to your liking.
+3. **Evaluation** - Evaluate a trained model:
+```python
+from non_verbal_voc_class.models import ModelFactory
+from non_verbal_voc_class.configs import Config
 
-> **Note**
->
-> The `init.py` script is self-contained and will delete itself once the procedure is completed. It is absolutely safe to delete if you prefer to edit the files manually.
+config = Config.from_file("path/to/config.py")
+model = ModelFactory.create_model(config.model_config)
+# Load checkpoint and evaluate
+```
 
-## Extra goodies
+## Supported Models
 
-If you are using VS Code as your editor of choice, you can use the following
-snippet in your `settings.json` file to format and sort imports on save.
+| Model | Sizes | PEFT Support | Base Implementation |
+|-------|-------|--------------|-------------------|
+| **Whisper** | tiny, base, small, medium, large | LoRA, Adapters, Prompt Tuning | `whisper_classifier.py` |
+| **Wav2Vec2** | base, large | LoRA, Adapters | `wav2vec2_classifier.py` |
+| **HuBERT** | base, large | LoRA, Adapters | `hubert_classifier.py` |
+| **WavLM** | base, large | LoRA, Adapters | `wavlm_classifier.py` |
+| **UniSpeech** | base, large | LoRA, Adapters | `unispeech_classifier.py` |
 
-```json
-{
-    "[python]": {
-        "diffEditor.ignoreTrimWhitespace": false,
-        "editor.wordBasedSuggestions": "off",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": "explicit"
-        },
-        "editor.defaultFormatter": "charliermarsh.ruff",
-    },
+## Configuration System
+
+The project uses a hierarchical configuration system with base configurations that can be extended:
+
+- **Base Configs** (`experiments_configs/_base_/`):
+  - `base_model.py` - Model architecture settings
+  - `base_preprocessing.py` - Data preprocessing parameters  
+  - `base_training.py` - Training hyperparameters
+
+- **Dataset-Specific Configs** - Override base settings for each dataset
+- **Experiment Configs** - Specific combinations of model + dataset + PEFT method
+
+## Datasets
+
+This project supports five public NVV datasets. Please refer to the individual dataset documentation for download and setup instructions:
+
+| Dataset | Description | Labels | Reference |
+|---------|-------------|--------|-----------|
+| **ASVP-ESD** | Audio-Visual Speaker-Independent Emotion and Sentiment Dataset | Emotion categories | [GitHub](https://github.com/Zengyi-Qin/ASVP-ESD) |
+| **CNVVE** | Chinese Non-Verbal Vocalization Emotion Dataset | Chinese emotional vocalizations | [GitHub](https://github.com/liuyu-ustc/CNVVE) |
+| **Non-Verbal Vocalization Dataset** | General purpose NVV classification | Various NVV types | [Zenodo](https://zenodo.org/record/4289923) |
+| **ReCANVo** | Relational and Contextual Audio Non-Verbal Vocalizations | `selftalk`, `frustrated`, `delighted`, `dysregulated`, `social`, `request` | [GitHub](https://github.com/jim-schwoebel/recanvo) |
+| **VIVAE** | Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset | Emotional categories | [GitHub](https://github.com/ndahlquist/VIVAE) |
+
+### Dataset Setup
+
+1. Download the datasets and place them in the `data/` directory
+2. Each dataset should follow this structure:
+```
+data/
+├── dataset_name/
+│   ├── samples/          # Audio files
+│   ├── labels.csv        # Labels and metadata
+│   └── README.md         # Dataset-specific documentation
+```
+
+3. Update the dataset paths in your experiment configuration files
+
+## Project Architecture
+
+### Core Components
+
+- **Models** (`src/non_verbal_voc_class/models/`): LSM implementations with PEFT integration
+- **Preprocessing** (`src/non_verbal_voc_class/preprocessing/`): Audio preprocessing and dataset loading
+- **Training** (`src/non_verbal_voc_class/training/`): Training loop, metrics, and evaluation
+- **Configs** (`src/non_verbal_voc_class/configs/`): Configuration management system
+
+### PEFT Methods
+
+The framework supports multiple Parameter-Efficient Fine-Tuning techniques:
+
+- **LoRA** (Low-Rank Adaptation): Efficient adaptation via low-rank matrix decomposition
+- **Adapters**: Lightweight modules inserted between transformer layers  
+- **Prompt Tuning**: Learning soft prompts while keeping the model frozen
+
+## Development
+
+### Running Tests
+```bash
+pytest tests/
+```
+
+### Code Quality
+```bash
+# Format code
+ruff format .
+
+# Lint code  
+ruff check .
+```
+
+### Documentation
+```bash
+# Build documentation
+mkdocs serve
+```  
+
+---
+
+## Citation
+
+If you find this repository useful in your research, please consider citing:
+
+```bibtex
+@misc{marquez2025exploring,
+  title = {Exploring the Adaptability of Large Speech Models to Non-Verbal Vocalization Tasks},
+  author = {Márquez, Juan José and D'Asaro, Federico and others},
+  year = {2025},
+  institution = {LINKS Foundation},
 }
 ```
-Of course, this is completely optional.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions, issues, or collaborations, please reach out:
+
+- **Juan José Márquez Villacís**: [juan.marquez@linksfoundation.com](mailto:juan.marquez@linksfoundation.com)
+- **Federico D'Asaro**: [federico.dasaro@linksfoundation.com](mailto:federico.dasaro@linksfoundation.com)
+
+## Acknowledgments
+
+This work was conducted at [LINKS Foundation](https://linksfoundation.com/) as part of research into adaptive speech processing technologies.
