@@ -20,6 +20,21 @@ We conduct experiments across **five NVV datasets**:
 - **ReCANVo** - Relational and Contextual Audio Non-Verbal Vocalizations
 - **VIVAE** - Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset
 
+## Model Architecture
+
+![Non-Verbal Vocalization Classifier Pipeline](assets/model_architecture.png)
+
+Our framework implements a unified pipeline for adapting Large Speech Models to non-verbal vocalization tasks:
+
+1. **Audio Input**: Raw audio waveforms are processed by the pre-trained LSM
+2. **Parameter-Efficient Fine-Tuning**: PEFT methods (LoRA, Adapters, Prompt Tuning) are applied to specific layers
+3. **Hidden State Extraction**: Layer-wise representations are extracted from the LSM backbone
+4. **Weighted Aggregation**: A learnable weighted sum combines information across layers
+5. **Unified Representation**: The aggregated features form a single sequence representation
+6. **Classification Head**: A multi-layer classifier (Linear Projection + Average Pooling + Classification Layer) predicts the final class label
+
+This architecture enables systematic analysis of which layers encode NVV-relevant information and how PEFT methods can effectively adapt pre-trained knowledge for non-verbal tasks.
+
 ## Key Results
 
 - **Whisper** consistently outperforms other LSMs across all datasets.
@@ -141,11 +156,11 @@ model = ModelFactory.create_model(config.model_config)
 
 | Model | Sizes | PEFT Support | Base Implementation |
 |-------|-------|--------------|-------------------|
-| **Whisper** | tiny, base, small, medium, large | LoRA, Adapters, Prompt Tuning | `whisper_classifier.py` |
-| **Wav2Vec2** | base, large | LoRA, Adapters | `wav2vec2_classifier.py` |
-| **HuBERT** | base, large | LoRA, Adapters | `hubert_classifier.py` |
-| **WavLM** | base, large | LoRA, Adapters | `wavlm_classifier.py` |
-| **UniSpeech** | base, large | LoRA, Adapters | `unispeech_classifier.py` |
+| **Whisper** | tiny, base, small | LoRA, Adapters, Prompt Tuning | `whisper_classifier.py` |
+| **Wav2Vec2** | base | LoRA, Adapters | `wav2vec2_classifier.py` |
+| **HuBERT** | base | LoRA, Adapters | `hubert_classifier.py` |
+| **WavLM** | base | LoRA, Adapters | `wavlm_classifier.py` |
+| **UniSpeech** | base | LoRA, Adapters | `unispeech_classifier.py` |
 
 ## Configuration System
 
@@ -165,11 +180,11 @@ This project supports five public NVV datasets. Please refer to the individual d
 
 | Dataset | Description | Labels | Reference |
 |---------|-------------|--------|-----------|
-| **ASVP-ESD** | Audio-Visual Speaker-Independent Emotion and Sentiment Dataset | Emotion categories | [GitHub](https://github.com/Zengyi-Qin/ASVP-ESD) |
-| **CNVVE** | Chinese Non-Verbal Vocalization Emotion Dataset | Chinese emotional vocalizations | [GitHub](https://github.com/liuyu-ustc/CNVVE) |
-| **Non-Verbal Vocalization Dataset** | General purpose NVV classification | Various NVV types | [Zenodo](https://zenodo.org/record/4289923) |
+| **ASVP-ESD** | Audio-Visual Speaker-Independent Emotion and Sentiment Dataset | `boredom_sigh`, `neutral_calm`, `happy_laugh_gaggle`, `sad_cry`, `angry_grunt_frustration`, `fearful_scream_panic`, `disgust_dislike_contempt`, `surprised_gasp_amazed`, `excited`, `pleasure`, `pain_groan`, `disappointment_disapproval`, `breath` | [GitHub](https://github.com/Zengyi-Qin/ASVP-ESD) |
+| **CNVVE** | Chinese Non-Verbal Vocalization Emotion Dataset | `ahem`, `confirm`, `continuous`, `decline`, `hush`, `psst` | [GitHub](https://github.com/liuyu-ustc/CNVVE) |
+| **Non-Verbal Vocalization Dataset** | General purpose NVV classification | `coughing`, `crying`, `laughing`, `lip-popping`, `lip-smacking`, `moaning`, `nose-blowing`, `panting`, `screaming`, `sighing`, `sneezing`, `teeth-chattering`, `teeth-grinding`, `throat-clearing`, `tongue-clicking`, `yawning` | [Zenodo](https://zenodo.org/record/4289923) |
 | **ReCANVo** | Relational and Contextual Audio Non-Verbal Vocalizations | `selftalk`, `frustrated`, `delighted`, `dysregulated`, `social`, `request` | [GitHub](https://github.com/jim-schwoebel/recanvo) |
-| **VIVAE** | Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset | Emotional categories | [GitHub](https://github.com/ndahlquist/VIVAE) |
+| **VIVAE** | Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset | `achievement`, `anger`, `fear`, `pain`, `pleasure`, `surprise` | [GitHub](https://github.com/ndahlquist/VIVAE) |
 
 ### Dataset Setup
 
@@ -202,28 +217,6 @@ The framework supports multiple Parameter-Efficient Fine-Tuning techniques:
 - **Adapters**: Lightweight modules inserted between transformer layers  
 - **Prompt Tuning**: Learning soft prompts while keeping the model frozen
 
-## Development
-
-### Running Tests
-```bash
-pytest tests/
-```
-
-### Code Quality
-```bash
-# Format code
-ruff format .
-
-# Lint code  
-ruff check .
-```
-
-### Documentation
-```bash
-# Build documentation
-mkdocs serve
-```  
-
 ---
 
 ## Citation
@@ -233,9 +226,8 @@ If you find this repository useful in your research, please consider citing:
 ```bibtex
 @misc{marquez2025exploring,
   title = {Exploring the Adaptability of Large Speech Models to Non-Verbal Vocalization Tasks},
-  author = {Márquez, Juan José and D'Asaro, Federico and others},
+  author = {Márquez Villacís, Juan José and D'Asaro, Federico and others},
   year = {2025},
-  institution = {LINKS Foundation},
 }
 ```
 
