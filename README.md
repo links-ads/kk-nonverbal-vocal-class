@@ -180,11 +180,11 @@ This project supports five public NVV datasets. Please refer to the individual d
 
 | Dataset | Description | Labels | Reference |
 |---------|-------------|--------|-----------|
-| **ASVP-ESD** | Audio-Visual Speaker-Independent Emotion and Sentiment Dataset | `boredom_sigh`, `neutral_calm`, `happy_laugh_gaggle`, `sad_cry`, `angry_grunt_frustration`, `fearful_scream_panic`, `disgust_dislike_contempt`, `surprised_gasp_amazed`, `excited`, `pleasure`, `pain_groan`, `disappointment_disapproval`, `breath` | [GitHub](https://github.com/Zengyi-Qin/ASVP-ESD) |
-| **CNVVE** | Chinese Non-Verbal Vocalization Emotion Dataset | `ahem`, `confirm`, `continuous`, `decline`, `hush`, `psst` | [GitHub](https://github.com/liuyu-ustc/CNVVE) |
-| **Non-Verbal Vocalization Dataset** | General purpose NVV classification | `coughing`, `crying`, `laughing`, `lip-popping`, `lip-smacking`, `moaning`, `nose-blowing`, `panting`, `screaming`, `sighing`, `sneezing`, `teeth-chattering`, `teeth-grinding`, `throat-clearing`, `tongue-clicking`, `yawning` | [Zenodo](https://zenodo.org/record/4289923) |
-| **ReCANVo** | Relational and Contextual Audio Non-Verbal Vocalizations | `selftalk`, `frustrated`, `delighted`, `dysregulated`, `social`, `request` | [GitHub](https://github.com/jim-schwoebel/recanvo) |
-| **VIVAE** | Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset | `achievement`, `anger`, `fear`, `pain`, `pleasure`, `surprise` | [GitHub](https://github.com/ndahlquist/VIVAE) |
+| **ASVP-ESD** | Audio-Visual Speaker-Independent Emotion and Sentiment Dataset | `boredom_sigh`, `neutral_calm`, `happy_laugh_gaggle`, `sad_cry`, `angry_grunt_frustration`, `fearful_scream_panic`, `disgust_dislike_contempt`, `surprised_gasp_amazed`, `excited`, `pleasure`, `pain_groan`, `disappointment_disapproval`, `breath` | [Kaggle](https://www.kaggle.com/datasets/dejolilandry/asvpesdspeech-nonspeech-emotional-utterances?resource=download) |
+| **CNVVE** | Chinese Non-Verbal Vocalization Emotion Dataset | `ahem`, `confirm`, `continuous`, `decline`, `hush`, `psst` | [Figshare](https://figshare.com/articles/dataset/CNVVE_Dataset_raw_audio_samples/23301665?file=41076086) |
+| **Non-Verbal Vocalization Dataset** | General purpose NVV classification | `coughing`, `crying`, `laughing`, `lip-popping`, `lip-smacking`, `moaning`, `nose-blowing`, `panting`, `screaming`, `sighing`, `sneezing`, `teeth-chattering`, `teeth-grinding`, `throat-clearing`, `tongue-clicking`, `yawning` | [GitHub](https://github.com/deeplyinc/Nonverbal-Vocalization-Dataset) |
+| **ReCANVo** | Relational and Contextual Audio Non-Verbal Vocalizations | `selftalk`, `frustrated`, `delighted`, `dysregulated`, `social`, `request` | [Zenodo](https://zenodo.org/records/5786860) |
+| **VIVAE** | Vocal Interactivity in-the-Wild Audio-Visual Emotion Dataset | `achievement`, `anger`, `fear`, `pain`, `pleasure`, `surprise` | [Zenodo](https://zenodo.org/records/4066235) |
 
 ### Dataset Setup
 
